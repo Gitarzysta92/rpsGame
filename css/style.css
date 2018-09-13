@@ -1,5 +1,20 @@
+/* Add primary font stack */
+/* Main color sheme */
+/* Mixins for circles */
+html, body {
+  height: 100%;
+}
+
 body {
-  background-color: #000;
-  color: #fff;
+  background-color: #d186ab;
+  color: #44303a;
+  font: 100% "Poppins", sans-serif;
+}
+
+.circle {
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  background-color: #44303a;
 }
 /*# sourceMappingURL=style.css.map */

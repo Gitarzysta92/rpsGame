@@ -1,4 +1,29 @@
+/* Add primary font stack */
+$font-stack: 'Poppins', sans-serif;
+
+/* Main color sheme */
+$primary-color: #d186ab;
+$secondary-color: #44303a;
+
+/* Mixins for circles */
+@mixin circle($radius) {
+	width: $radius;
+	height: $radius;
+	border-radius: $radius;
+}
+
+html, body {
+	height: 100%;
+}
+
 body {
-	background-color: #000;
-	color: #fff;
+	background-color: $primary-color;
+	color: $secondary-color;
+	font: 100% $font-stack; 
+}
+
+
+.circle {
+	@include circle(300px);
+	background-color: $secondary-color;
 }
