@@ -2,7 +2,7 @@
   "name": "rps-game",
   "version": "0.0.1",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "test": "npm-run-all test:*",
     "test:html": "globstar nu-html-checker *.html",
@@ -15,10 +15,10 @@
     "build:sass": "node-sass --output-style compact -o css sass",
     "build:autoprefixer": "autoprefixer-cli css/*.css",
     "watch": "npm-run-all -p watch:*",
-    "watch:browsersync": "browser-sync start --server --files 'css/*.css' '*.html'",
-    "watch:sassprefixer": "onchange -d 100 sass/*.scss -- npm-run-all build-dev:*",
+    "watch:browsersync": "browser-sync start --server --files \"css/*.css\" \"*.html\"",
+    "watch:sassprefixer": "onchange -d 100 sass/*.scss -- npm-run-all -s build-dev:*",
     "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
-    "build-dev:autoprefixer": "autoprefixer-cli -d css/ style.css"
+    "build-dev:autoprefixer": "autoprefixer-cli -d css/ css/style.css"
   },
   "repository": {
     "type": "git",
