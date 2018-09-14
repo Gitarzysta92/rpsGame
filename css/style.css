@@ -52,9 +52,12 @@ body {
 }
 
 .player .latest-moves {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
 }
 
 .player .latest-moves span {
@@ -65,18 +68,25 @@ body {
 
 .player .latest-moves ul {
   list-style: none;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
   padding: 0;
   margin: 0;
 }
 
 .player .latest-moves ul li {
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
   box-sizing: border-box;
   margin: 5px;
   width: 50px;
@@ -90,10 +100,14 @@ body {
 }
 
 .game-display {
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   min-width: 300px;
   height: 300px;
 }
@@ -130,7 +144,18 @@ body {
 }
 
 .game-display .start-button.started {
-  display: none;
+  animation-name: button-fade-out;
+  animation-duration: 1s;
 }
 
+@keyframes button-fade-out {
+  0% {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: matrix(0.1, 0, 0, 0.1, 0, 100);
+  }
+}
 /*# sourceMappingURL=style.css.map */
