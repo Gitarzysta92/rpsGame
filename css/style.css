@@ -52,12 +52,9 @@ body {
 }
 
 .player .latest-moves {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-align: center;
-      align-items: center;
+  flex-direction: row;
+  align-items: center;
 }
 
 .player .latest-moves span {
@@ -68,25 +65,18 @@ body {
 
 .player .latest-moves ul {
   list-style: none;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-direction: row;
-      flex-direction: row;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
-  -ms-flex-pack: start;
-      justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
   padding: 0;
   margin: 0;
 }
 
 .player .latest-moves ul li {
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-flex-align: center;
-      align-items: center;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   margin: 5px;
   width: 50px;
@@ -99,26 +89,48 @@ body {
   color: #d186ab;
 }
 
-.game-info {
-  display: -ms-flexbox;
+.game-display {
   display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-width: 300px;
   height: 300px;
 }
 
-.game-info .start-button {
+.game-display .start-button {
   width: 100px;
   height: 50px;
   background-color: #f6deea;
 }
 
-.game-info .start-button:focus {
+.game-display .start-button:focus {
   box-shadow: 0 0 0 0.2rem #44303a;
 }
+
+.game-display .round {
+  text-align: center;
+  font-weight: 900;
+  color: #f6deea;
+}
+
+.game-display .round h1 {
+  font-size: 30px;
+  display: none;
+}
+
+.game-display .round .countdown {
+  font-size: 120px;
+  display: none;
+}
+
+.game-display .start-button {
+  font-weight: 900;
+  color: #44303a;
+}
+
+.game-display .start-button.started {
+  display: none;
+}
+
 /*# sourceMappingURL=style.css.map */
