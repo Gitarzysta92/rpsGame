@@ -1,6 +1,10 @@
 /* Add primary font stack */
 /* Main color sheme */
 /* Mixins for circles */
+h2 {
+  font-weight: 700;
+}
+
 html, body {
   height: 100%;
 }
@@ -11,10 +15,110 @@ body {
   font: 100% "Poppins", sans-serif;
 }
 
-.circle {
+.player .circle {
   width: 300px;
   height: 300px;
   border-radius: 300px;
+  cursor: pointer;
   background-color: #44303a;
+  transition: transform .2s ease-in-out;
+}
+
+.player .circle .move {
+  font-size: 120px;
+  color: #f6deea;
+}
+
+.player .circle:hover, .player .circle.winner {
+  transform: scale(1.1);
+  animation-name: circle-blink;
+  animation-duration: .3s;
+  animation-delay: .2s;
+}
+
+@keyframes circle-blink {
+  0% {
+    background-color: #f6deea;
+  }
+  100% {
+    background-color: #44303a;
+  }
+}
+
+.player .move-name {
+  box-sizing: border-box;
+  padding: 40px 0 20px 0;
+  text-align: center;
+}
+
+.player .latest-moves {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
+}
+
+.player .latest-moves span {
+  box-sizing: border-box;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+.player .latest-moves ul {
+  list-style: none;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+}
+
+.player .latest-moves ul li {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-flex-align: center;
+      align-items: center;
+  box-sizing: border-box;
+  margin: 5px;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+}
+
+.player .latest-moves ul li.latest, .player .latest-moves ul li:hover {
+  background-color: #44303a;
+  color: #d186ab;
+}
+
+.game-info {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  min-width: 300px;
+  height: 300px;
+}
+
+.game-info .start-button {
+  width: 100px;
+  height: 50px;
+  background-color: #f6deea;
+}
+
+.game-info .start-button:focus {
+  box-shadow: 0 0 0 0.2rem #44303a;
 }
 /*# sourceMappingURL=style.css.map */

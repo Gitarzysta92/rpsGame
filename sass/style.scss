@@ -4,12 +4,17 @@ $font-stack: 'Poppins', sans-serif;
 /* Main color sheme */
 $primary-color: #d186ab;
 $secondary-color: #44303a;
+$light-text: #f6deea;
 
 /* Mixins for circles */
 @mixin circle($radius) {
 	width: $radius;
 	height: $radius;
 	border-radius: $radius;
+}
+
+h2 {
+	font-weight: 700;
 }
 
 html, body {
@@ -22,8 +27,83 @@ body {
 	font: 100% $font-stack; 
 }
 
+.player {
+	.circle {
+		@include circle(300px);
+		cursor: pointer;
+		background-color: $secondary-color;
+		transition: transform .2s ease-in-out; 
+		.move {
+			font-size: 120px;
+			color: $light-text;
+		}
+		&:hover, &.winner {
+			transform: scale(1.1);
+			animation-name: circle-blink;
+			animation-duration: .3s;
+			animation-delay: .2s;
+		}
+		@keyframes circle-blink {
+			0% { background-color: $light-text; }
+			100% { background-color: $secondary-color; }
+		}
+	}
+	.move-name {
+		box-sizing: border-box;
+		padding:40px 0 20px 0;
+		text-align: center;
+	}
+	.latest-moves {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		span {
+			box-sizing: border-box;
+			padding: 5px;
+			white-space: nowrap;
+		}
+		ul {
+			list-style: none;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: nowrap;
+			justify-content: flex-start;
+			padding: 0;
+			margin: 0;
+			li {
+				display: flex;
+				justify-content: center;
+				align-items:center;
+				box-sizing: border-box;
+				margin:5px;
+				width: 50px;
+				height: 50px;
+				border-radius: 10px;
+				&.latest, &:hover {
+					background-color: $secondary-color;
+					color: $primary-color;
+				}
+			}
+		}
+	}
+}
 
-.circle {
-	@include circle(300px);
-	background-color: $secondary-color;
+.game-info {
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content: center;
+	min-width: 300px;
+	height: 300px;
+	.start-button {
+		width: 100px;
+		height: 50px;
+		background-color: $light-text;
+		&:focus {
+			box-shadow: 0 0 0 0.2rem $secondary-color;
+		}
+	}
+	.round-countdown {
+
+	}
 }
