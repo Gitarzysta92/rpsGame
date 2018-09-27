@@ -1,6 +1,7 @@
 /* Add primary font stack */
 /* Main color sheme */
 /* Mixins for circles */
+/* Mixins for animations */
 h2 {
   font-weight: 700;
 }
@@ -130,7 +131,20 @@ body {
 
 .game-display .round h1 {
   font-size: 30px;
-  display: none;
+}
+
+.game-display .round h1.zoom-in {
+  animation-name: zoom-in;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.game-display .round h1.zoom-out {
+  animation-name: zoom-out;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .game-display .round .countdown {
@@ -138,24 +152,70 @@ body {
   display: none;
 }
 
+.game-display .round .countdown.zoom-in {
+  animation-name: zoom-in;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.game-display .round .countdown.zoom-out {
+  animation-name: zoom-out;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
 .game-display .start-button {
   font-weight: 900;
   color: #44303a;
 }
 
-.game-display .start-button.started {
-  animation-name: button-fade-out;
-  animation-duration: 1s;
+.game-display .start-button.move-down-out {
+  animation-name: move-down-out;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
-@keyframes button-fade-out {
+@keyframes zoom-out {
   0% {
     opacity: 1;
     transform: matrix(1, 0, 0, 1, 0, 0);
   }
   100% {
     opacity: 0;
-    transform: matrix(0.1, 0, 0, 0.1, 0, 100);
+    transform: matrix(0.3, 0, 0, 0.3, 0, 0);
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    opacity: 0;
+    transform: matrix(10, 0, 0, 10, 0, 0);
+  }
+  25% {
+    opacity: 0.25;
+    transform: matrix(5, 0, 0, 5, 0, 0);
+  }
+  50% {
+    opacity: 0.50;
+    transform: matrix(3, 0, 0, 3, 0, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+}
+
+@keyframes move-down-out {
+  0% {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: matrix(0.7, 0, 0, 0.7, 0, 100);
   }
 }
 /*# sourceMappingURL=style.css.map */

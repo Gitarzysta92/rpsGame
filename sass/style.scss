@@ -13,6 +13,14 @@ $light-text: #f6deea;
 	border-radius: $radius;
 }
 
+/* Mixins for animations */
+@mixin animation($animationName, $time) {
+	animation-name: $animationName;
+	animation-duration: $time;
+	animation-timing-function: ease-in-out;
+	animation-fill-mode: forwards;
+}
+
 h2 {
 	font-weight: 700;
 }
@@ -109,30 +117,79 @@ body {
 		color: $light-text;
 		h1 {
 			font-size: 30px;
-			display: none;
+			&.zoom-in {
+				@include animation(zoom-in, .9s);
+			}
+			&.zoom-out {
+				@include animation(zoom-out, .9s);
+			}
 		}
 		.countdown {
 			font-size: 120px;
-			display: none;
+			display: none; 
+			&.zoom-in {
+				@include animation(zoom-in, .9s);
+			}
+			&.zoom-out {
+				@include animation(zoom-out, .9s);
+			}
 		}
 	}
 	.start-button {
 		font-weight: 900;
 		color: $secondary-color;
-		&.started {
-
-			animation-name: button-fade-out;
-			animation-duration: 1s;
+		&.move-down-out {
+			@include animation(move-down-out, .1s);
 		}
-		@keyframes button-fade-out {
+	
+	}
+}
+
+// Global key frames'
+	@keyframes zoom-out {
+			0% { 
+				opacity: 1; 
+				transform: matrix(1, 0, 0, 1, 0, 0);
+
+			}
+
+			100% { 
+
+				opacity: 0;
+				transform: matrix(0.3, 0, 0, 0.3, 0, 0);
+			}
+		}
+
+	@keyframes zoom-in {
+			0% { 
+				opacity: 0;
+				transform: matrix(10, 0, 0, 10, 0, 0);
+
+			}
+
+			25% { 
+				opacity: 0.25;
+				transform: matrix(5, 0, 0, 5, 0, 0);
+			}
+
+			50% { 
+				opacity: 0.50;
+				transform: matrix(3, 0, 0, 3, 0, 0);
+			}
+			100% { 
+				opacity: 1; 
+				transform: matrix(1, 0, 0, 1, 0, 0);
+
+			}
+		}
+
+	@keyframes move-down-out {
 			0% { 
 				opacity: 1;
 				transform: matrix(1, 0, 0, 1, 0, 0);
 			}
 			100% { 
 				opacity: 0; 
-				transform: matrix(0.1, 0, 0, 0.1, 0, 100);
+				transform: matrix(0.7, 0, 0, 0.7, 0, 100);
 			}
 		}
-	}
-}
