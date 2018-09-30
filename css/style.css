@@ -14,6 +14,7 @@ body {
   background-color: #d186ab;
   color: #44303a;
   font: 100% "Poppins", sans-serif;
+  overflow: hidden;
 }
 
 .player .circle {
@@ -21,6 +22,7 @@ body {
   height: 300px;
   border-radius: 300px;
   cursor: pointer;
+  overflow: hidden;
   background-color: #44303a;
   transition: transform .2s ease-in-out;
 }
@@ -44,6 +46,34 @@ body {
   100% {
     background-color: #44303a;
   }
+}
+
+.player .circle i.move-up-out {
+  animation-name: move-up-out;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.player .circle i.move-up-in {
+  animation-name: move-up-in;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.player .circle i.move-down-out {
+  animation-name: move-down-out;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.player .circle i.move-down-in {
+  animation-name: move-down-in;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 .player .move-name {
@@ -216,6 +246,50 @@ body {
   100% {
     opacity: 0;
     transform: matrix(0.7, 0, 0, 0.7, 0, 100);
+  }
+}
+
+@keyframes move-up-out {
+  0% {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: matrix(1, 0, 0, 1, 0, -500);
+  }
+}
+
+@keyframes move-up-in {
+  0% {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 500);
+  }
+  100% {
+    opacity: 0;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+}
+
+@keyframes move-down-in {
+  0% {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, -500);
+  }
+  100% {
+    opacity: 0;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+}
+
+@keyframes move-down-out {
+  0% {
+    opacity: 1;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: matrix(1, 0, 0, 1, 0, 500);
   }
 }
 /*# sourceMappingURL=style.css.map */

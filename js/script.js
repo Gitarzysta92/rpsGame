@@ -1,81 +1,225 @@
 "use strict";
 var startButton = document.getElementById('game-start'),
 	roundDisplay = document.querySelector('.round h1'),
-	countdown = document.querySelector('.countdown');
+	countdown = document.querySelector('.countdown'),
+	circle = document.querySelector('.circle');
+
+
+
+
+onWheelEvent(circle, function(element, direction){
+	var icon = element.getElementsByTagName('i')[0];
+
+	if (direction === 'up') {
+		animation(icon, 'move-up-out', function(element) {
+			setFigure(element, 'up');
+		}, 'move-up-in' );
+	} else if ( direction === 'down' ) {
+		animation(icon, 'move-down-out', function(element) {
+			setFigure(element,  'down');
+		}, 'move-down-in' );
+	}
+})
+
 
 
 
 startButton.addEventListener("click", function(event){
 	var self = this;
 
-	animation(this, [true, 3], function() {
+	animation(this, 'move-down-out', function(element) {
+		element.style.display = 'none';
 		triggerRound();
-	}, 'move-down-out');
-
-
-
+	});
 });
 
 
-
-function buttonTask(button) {
-
-}
-
-
 function triggerRound(number) {
-	animation(roundDisplay, [true, 3], function() {
-		
-	}, 'zoom-in','zoom-out');
+	animation(roundDisplay, 'zoom-in','zoom-out', function() {
+		countDown();
+	});
 }
 
-var countdown = function(iterations) {
-	var i = 1;
-	if (iterations > 0) {
-		animation(countdown, [true, 3], function(){
-				countdown.innerHTML = i;
-				i++
-		},'zoom-in','zoom-out');
+function countDown() {
+	animation(countdown, 
+		function(element) {
+			element.innerHTML = '3';
+			element.style.display = 'block';
+	}, 
+	'zoom-in','zoom-out', 
+		function(element) {
+			element.innerHTML = '2';
+	},
+	'zoom-in','zoom-out',
+		function(element) {
+			element.innerHTML = '1';
+	},
+	'zoom-in','zoom-out');	
+}
 
-		return countdown(iterations -1);
-		console.log(loop);
-	} else {
-		return
+
+//
+//  Game engine
+//  - 
+//
+
+function getWinner() {
+
+}
+
+
+function 
+
+
+//
+//  Controls
+//  - Mouse wheel
+//
+
+function onWheelEvent(domObject, callback){
+	var element = domObject,
+		events = [],
+		threshold = 300;
+		
+	element.addEventListener('wheel', wheelEventHandler);
+
+	function wheelEventHandler(event) {
+		var eventTime = event.timeStamp.toFixed(0),
+			direction = '';
+
+			if ( event.deltaY > 0 ) {
+				direction = 'down'; 
+			} else {
+				direction = 'up';
+			}
+
+			events.push(eventTime);
+
+			if ( eventActivity(eventTime) === true ) {
+				callback(element, direction);	
+			}	
+	}
+
+	function eventActivity(time) {
+		var latestEvent = parseInt(events[events.length - 2], 10) + threshold || parseInt(events[events.length - 1], 10) - 100,
+			currentEvent = parseInt(events[events.length - 1], 10);
+		
+		if ( latestEvent < currentEvent ) {
+			events.splice(0, events.length - 1);
+			return true;		
+		} else {
+			return false;
+		}	
 	}
 }
+
+
+
 
 
 
 //
 // Animations
+// - 
 //
 
-function animation (element, optional, callback, ...animations) {
-	var animationsStack = animations.slice(),
-		display = optional[0],
-		iterations = optional[1],
-		callbackStack = [];
-
-	// Prepare functions for callback
-	if (display === true) {
-		var divDisplay = setDisplay(element, animationsStack);	 
-		callbackStack.push(divDisplay);		
-	}
-
-	if (typeof callback === 'function') {
-		callbackStack.push(callback);	
-	}
-
-	if (typeof element === 'object') {
-
-		nextInStack(element, animations, callbackStack);
-		//var again = function() {
-		//	return	nextInStack(element, animations, callbackStack);
-		//}
-		//callbackStack.push(again);	
-	}
-	//console.log(callbackStack);
+function animation (element, ...steps) {
+	var self = element;
+	if (!element) { 
+		return; 
+	}	
+	nextInStack(self, steps, function(){
+		//console.log('end');	
+	});	
+	
 };	
+
+
+// Iterate over animations stack
+function nextInStack(element, toDo, callback) {
+	var stack = toDo,
+		toRemove = stack[0],
+		limiter = 1;
+
+		
+	if (typeof stack[0] === 'function'){
+		(stack.shift())(element);
+		nextInStack(element, stack, callback);
+	} else if (typeof stack[0] === 'string') {
+		element.classList.add(stack.shift());
+		element.addEventListener("animationend", function() {
+			if (limiter === 1) {
+				element.classList.remove(toRemove);
+				limiter++
+				nextInStack(element, stack, callback);
+			}	
+		});
+	} else {
+		callback();
+		return;
+	}
+}
+
+
+//
+// Utilities - Class Finder
+// - find class by part of it name
+//
+
+
+function findClassByString(classes, string) {
+	for (var i = 0; i < classes.length; i++) {
+		if (classes[i].search(string) === 0) {
+			return classes[i];
+		}	
+	}
+}
+
+
+
+// Utilities - Figure chooser
+// - Set name, icon and value by choosen figure
+
+var pointer = 0;
+
+function setFigure(icon, direction) {
+	var circle = icon.parentNode,
+		current = circle.getAttribute('data-figure'),
+		displayFigure = circle.nextElementSibling.getElementsByTagName('h2')[0],
+		figureClass = findClassByString(icon.classList, 'fa-');
+
+		icon.classList.remove(figureClass);
+
+	if ( direction === 'up' && pointer < 2 ){
+		pointer += 1;
+	} else if ( direction === 'up' && pointer === 2 ) {
+		pointer = 0;
+	} else if ( direction === 'down' && pointer > 0) {
+		pointer -= 1;
+	} else if ( direction === 'down' && pointer === 0) {
+		pointer = 2;
+	}	
+
+	if ( pointer === 1 ) {		
+		circle.dataset.figure = 'paper';
+		icon.classList.add('fa-hand-paper');
+		displayFigure.innerHTML = 'Paper';
+	} else if( pointer === 2 ) {
+		circle.dataset.figure = 'rock';
+		icon.classList.add('fa-hand-rock');
+		displayFigure.innerHTML = 'Rock';
+	} else if( pointer === 0  ) {	
+		circle.dataset.figure = 'scissors';
+		icon.classList.add('fa-hand-scissors');
+		displayFigure.innerHTML = 'Scissors';
+	}
+	
+}
+
+/*
+
+
+
 
 // Additional options for animation
 // Set display of animated element, based on last animation type
@@ -127,38 +271,19 @@ function display(type) {
 }
 
 
-// Iterate over animations stack
-function nextInStack(element, animations, callback) {
-	var toRemove = animations[0],
-		steps = animations,
-		limit = 1;
 
-	if (steps[0] === undefined){
-		finishAnimation(callback);
-		return;
-	}
-	element.classList.add(steps.shift());
-	element.addEventListener("animationend", function() {
-		if (limit === 1) {
-			nextInStack(element, steps, callback);
-			element.classList.remove(toRemove);;
-			limit++
-		}	
-	});
-}
 
-function executeStack(stack) {
-	for (var i = 0; stack.length > i; i++) {
-		// console.log(i, stack[i]);  
-    	(stack[i])();
-	}
-}
 
-function finishAnimation(stack) {
-	executeStack(stack);
-}
 
-/*
+
+
+
+
+
+
+
+
+
 
 
 

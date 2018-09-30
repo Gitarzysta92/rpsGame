@@ -33,12 +33,14 @@ body {
 	background-color: $primary-color;
 	color: $secondary-color;
 	font: 100% $font-stack; 
+	overflow: hidden;
 }
 
 .player {
 	.circle {
 		@include circle(300px);
 		cursor: pointer;
+		overflow: hidden;
 		background-color: $secondary-color;
 		transition: transform .2s ease-in-out; 
 		.move {
@@ -54,6 +56,18 @@ body {
 		@keyframes circle-blink {
 			0% { background-color: $light-text; }
 			100% { background-color: $secondary-color; }
+		}
+		i.move-up-out {
+			@include animation(move-up-out, .2s);
+		}
+		i.move-up-in {
+			@include animation(move-up-in, .2s);
+		}
+		i.move-down-out {
+			@include animation(move-down-out, .2s);
+		}
+		i.move-down-in {
+			@include animation(move-down-in, .2s);
 		}
 	}
 	.move-name {
@@ -193,3 +207,59 @@ body {
 				transform: matrix(0.7, 0, 0, 0.7, 0, 100);
 			}
 		}
+
+	@keyframes move-up-out {
+		0% { 
+			opacity: 1; 
+			transform: matrix(1, 0, 0, 1, 0, 0);
+
+		}
+
+		100% { 
+
+			opacity: 0;
+			transform: matrix(1, 0, 0, 1, 0, -500);
+		}
+	}
+
+	@keyframes move-up-in {
+		0% { 
+			opacity: 1; 
+			transform: matrix(1, 0, 0, 1, 0, 500);
+
+		}
+
+		100% { 
+
+			opacity: 0;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+	}
+
+	@keyframes move-down-in {
+		0% { 
+			opacity: 1; 
+			transform: matrix(1, 0, 0, 1, 0, -500);
+
+		}
+
+		100% { 
+
+			opacity: 0;
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+	}
+
+	@keyframes move-down-out {
+		0% { 
+			opacity: 1; 
+			transform: matrix(1, 0, 0, 1, 0, 0);
+
+		}
+
+		100% { 
+
+			opacity: 0;
+			transform: matrix(1, 0, 0, 1, 0, 500);
+		}
+	}
