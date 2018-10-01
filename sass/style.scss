@@ -47,15 +47,10 @@ body {
 			font-size: 120px;
 			color: $light-text;
 		}
-		&:hover, &.winner {
-			transform: scale(1.1);
+		&.blink {
 			animation-name: circle-blink;
-			animation-duration: .3s;
-			animation-delay: .2s;
-		}
-		@keyframes circle-blink {
-			0% { background-color: $light-text; }
-			100% { background-color: $secondary-color; }
+			animation-duration: 2s;
+			animation-delay: 1s;
 		}
 		i.move-up-out {
 			@include animation(move-up-out, .2s);
@@ -115,8 +110,9 @@ body {
 	flex-direction: column;
 	align-items:center;
 	justify-content: center;
-	min-width: 300px;
+	width: 300px;
 	height: 300px;
+	line-height: 70px;
 	.start-button {
 		width: 100px;
 		height: 50px;
@@ -154,6 +150,9 @@ body {
 		color: $secondary-color;
 		&.move-down-out {
 			@include animation(move-down-out, .1s);
+		}
+		&.move-up-in {
+			@include animation(move-up-in, .1s);
 		}
 	
 	}
@@ -262,4 +261,15 @@ body {
 			opacity: 0;
 			transform: matrix(1, 0, 0, 1, 0, 500);
 		}
+	}
+	@keyframes circle-blink {
+			0% {  }
+
+			10% { background-color: $light-text; transform: scale(1.1);}
+
+			12% { background-color: $secondary-color;}
+
+			90% { transform: scale(1.1);}
+
+			100% {  }
 	}

@@ -6,24 +6,6 @@ var startButton = document.getElementById('game-start'),
 
 
 
-
-onWheelEvent(circle, function(element, direction){
-	var icon = element.getElementsByTagName('i')[0];
-
-	if (direction === 'up') {
-		animation(icon, 'move-up-out', function(element) {
-			controlsFigure(element, 'up');
-		}, 'move-up-in' );
-	} else if ( direction === 'down' ) {
-		animation(icon, 'move-down-out', function(element) {
-			controlsFigure(element,  'down');
-		}, 'move-down-in' );
-	}
-})
-
-
-
-
 startButton.addEventListener("click", function(event){
 	var self = this;
 
@@ -43,6 +25,7 @@ function triggerRound(number) {
 function countDown() {
 	animation(countdown, 
 		function(element) {
+			element.style.fontSize = '120px';
 			element.innerHTML = '3';
 			element.style.display = 'block';
 	}, 
@@ -54,7 +37,38 @@ function countDown() {
 		function(element) {
 			element.innerHTML = '1';
 	},
-	'zoom-in','zoom-out');	
+	'zoom-in','zoom-out',
+		function(element) {
+			element.style.fontSize = '80px';
+			element.innerHTML = getWinner(figures.indexOf(getFigure('player-1')));		
+	});	
+}
+
+function blinkWinner(winnerFigure) {
+	var winner = document.querySelectorAll('[data-figure="' + winnerFigure + '"]');
+
+	if (winner.length === 1) {
+		animation(winner[0], 'blink', function() {
+			nextRound();
+		});
+	} else {
+		setTimeout(function(){
+			nextRound();
+		}, 1000);
+	}
+}
+
+
+function nextRound() {
+	animation(countdown, 'zoom-out', function(element){
+		element.style.display = 'none';
+		roundDisplay.innerHTML = 'Round ' + (rounds.length + 1);
+		animation(startButton, function(element) {
+			element.style.display = 'block';
+		},'move-up-in');
+	});
+
+		
 }
 
 
@@ -63,33 +77,39 @@ function countDown() {
 //  - 
 //
 
-var figures = ['scissors', 'paper', 'rock'];
-
-
-
-document.body.addEventListener('click', function(event){
-	var element = event.target,
-		figure = figures.indexOf(event.target.dataset.figure);
-		getWinner(figure);
-})
+var figures = ['scissors', 'paper', 'rock'],
+	rounds = [];
 
 
 function getWinner(playerFigure) {
 	var player = playerFigure,
-		oponent = oponentFigure();
+		oponent = oponentFigure(),
+		round = {
+			playerOne : player,
+			playerTwo : oponent
+		};
+	rounds.push(round);
+	console.log(rounds);
 
 	if ( player === oponent - 1 || player === 2 && oponent === 0 ){
-		console.log('Winner: ', figures[player], figures[oponent]);	
+		blinkWinner(figures[player]);
+		return 'You win';
 	} else if ( player === oponent) {
-		console.log('it\' draw', player, oponent); 
+		blinkWinner(figures[player]);
+		return 'Draw';
 	} else {
-		console.log('You have lost', player, oponent);
+		blinkWinner(figures[oponent]);
+		return 'You lost';
 	}
 }
 
 
 function oponentFigure() {
-	return Math.floor(Math.random() * 3);
+	var number = Math.floor(Math.random() * 3),
+		oponent = document.getElementById('player-2').getElementsByTagName('i')[0];;
+
+	setFigure(oponent, number);
+	return number;
 }
 
 
@@ -97,6 +117,22 @@ function oponentFigure() {
 //  Controls
 //  - Mouse wheel
 //
+
+onWheelEvent(circle, function(element, direction){
+	var icon = element.getElementsByTagName('i')[0];
+
+	if (direction === 'up') {
+		animation(icon, 'move-up-out', function(element) {
+			controlsFigure(element, 'up');
+		}, 'move-up-in' );
+	} else if ( direction === 'down' ) {
+		animation(icon, 'move-down-out', function(element) {
+			controlsFigure(element,  'down');
+		}, 'move-down-in' );
+	}
+})
+
+
 
 function onWheelEvent(domObject, callback){
 	var element = domObject,
@@ -134,8 +170,6 @@ function onWheelEvent(domObject, callback){
 		}	
 	}
 }
-
-
 
 
 //
@@ -196,16 +230,15 @@ function findClassByString(classes, string) {
 }
 
 
-
+//
 // Utilities - Figure chooser
 // - Set name, icon and value by choosen figure
+//
 
 var pointer = 0;
 
 function controlsFigure(icon, direction) {
-	var figureClass = findClassByString(icon.classList, 'fa-');
-
-		icon.classList.remove(figureClass);
+	
 
 	if ( direction === 'up' && pointer < 2 ){
 		pointer += 1;
@@ -217,17 +250,24 @@ function controlsFigure(icon, direction) {
 		pointer = 2;
 	}
 
-
+	setFigure(icon, pointer);
 }
 
+//
+// Utilities - Figure setter
+// - Set name, icon and value by choosen figure
+//
+
 function setFigure(icon, figureNumber) {
-	var circle = iconElement.parentNode,
+	var circle = icon.parentNode,
 		current = circle.getAttribute('data-figure'),
 		displayFigure = circle.nextElementSibling.getElementsByTagName('h2')[0];
 
+		removeFigureClass(icon);
+	
 	if ( figureNumber === 1 ) {		
 		circle.dataset.figure = 'paper';
-		iconElement.classList.add('fa-hand-paper');
+		icon.classList.add('fa-hand-paper');
 		displayFigure.innerHTML = 'Paper';
 	} else if( figureNumber === 2 ) {
 		circle.dataset.figure = 'rock';
@@ -240,6 +280,21 @@ function setFigure(icon, figureNumber) {
 	}
 }
 
+//
+// Utilities - Figure getter
+// - get figure by player id
+//
+
+function getFigure(playerId) {
+	var element = document.getElementById(playerId);
+
+	return element.querySelector('.circle').dataset.figure;
+}
+
+function removeFigureClass(icon) {
+	var figureClass = findClassByString(icon.classList, 'fa-');
+		icon.classList.remove(figureClass);
+}
 
 /*
 

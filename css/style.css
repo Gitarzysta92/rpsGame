@@ -32,20 +32,10 @@ body {
   color: #f6deea;
 }
 
-.player .circle:hover, .player .circle.winner {
-  transform: scale(1.1);
+.player .circle.blink {
   animation-name: circle-blink;
-  animation-duration: .3s;
-  animation-delay: .2s;
-}
-
-@keyframes circle-blink {
-  0% {
-    background-color: #f6deea;
-  }
-  100% {
-    background-color: #44303a;
-  }
+  animation-duration: 2s;
+  animation-delay: 1s;
 }
 
 .player .circle i.move-up-out {
@@ -139,8 +129,9 @@ body {
       align-items: center;
   -ms-flex-pack: center;
       justify-content: center;
-  min-width: 300px;
+  width: 300px;
   height: 300px;
+  line-height: 70px;
 }
 
 .game-display .start-button {
@@ -203,6 +194,13 @@ body {
 
 .game-display .start-button.move-down-out {
   animation-name: move-down-out;
+  animation-duration: 0.1s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.game-display .start-button.move-up-in {
+  animation-name: move-up-in;
   animation-duration: 0.1s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
@@ -290,6 +288,23 @@ body {
   100% {
     opacity: 0;
     transform: matrix(1, 0, 0, 1, 0, 500);
+  }
+}
+
+@keyframes circle-blink {
+  0% {
+  }
+  10% {
+    background-color: #f6deea;
+    transform: scale(1.1);
+  }
+  12% {
+    background-color: #44303a;
+  }
+  90% {
+    transform: scale(1.1);
+  }
+  100% {
   }
 }
 /*# sourceMappingURL=style.css.map */
