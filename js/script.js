@@ -246,9 +246,11 @@ function controlsStatus(status) {
 	circle = document.querySelector('.circle');
 
 	if (status === 'on') {
-		onWheelEvent(circle, eventDirection);	
+		onWheelEvent(circle, eventDirection);
+		window.onkeyup = onKeyboardEvent;
 	} else if (status === 'off') {
 		onWheelEvent(circle, eventDirection, 'remove');
+		window.onkeyup = null;
 	}
 }
 
@@ -265,6 +267,25 @@ function eventDirection(element, direction){
 			controlsFigure(element,  'down');
 		}, 'move-down-in' );
 	}
+}
+
+
+//
+//  Controls
+//  - wheel event controls
+//
+
+
+function onKeyboardEvent(e) {
+    var key = event.keyCode ? event.keyCode : event.which;
+    
+    if (key == 87) {
+     	eventDirection(circle, 'up');
+    }else if (key == 83) {
+     	eventDirection(circle, 'down');
+    }
+    
+    console.log(key);
 }
 
 
