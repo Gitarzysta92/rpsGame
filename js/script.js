@@ -1,23 +1,62 @@
 "use strict";
-var startButton = document.getElementById('game-start'),
+var startButton = document.getElementById('round'),
 	roundDisplay = document.querySelector('.round h1'),
 	countdown = document.querySelector('.countdown'),
-	circle = document.querySelector('.circle');
+	circle = document.querySelector('.circle'),
+	modal = document.querySelector('.modal');
 
-
+var form = document.getElementById("form"),
+ 	data = document.getElementsByClassName("data");
 
 startButton.addEventListener("click", function(event){
 	var self = this;
 
-	animation(this, 'move-down-out', function(element) {
-		element.style.display = 'none';
-		triggerRound();
-	});
+	if ( event.target.dataset.game === 'new-game' ) {
+		animation(this, 'move-down-out', function(element) {
+			element.style.display = 'none';
+		});
+		animation(modal, function(element) {
+			element.style.display = 'flex';
+			form.addEventListener('submit', onFormSubmit);
+		},'zoom-in');
+	} else if ( event.target.dataset.game === 'play-game' ) {
+		animation(this, 'move-down-out', function(element) {
+			element.style.display = 'none';
+			triggerRound();
+		});
+		controlsStatus('on');
+	}	
 });
 
 
-function triggerRound(number) {
-	animation(roundDisplay, 'zoom-in','zoom-out', function() {
+//
+//  User Interface
+//  - moves history
+//
+
+function onFormSubmit(e) {
+	e.preventDefault();
+	setGame(data);
+
+	playerName('player-1', gameSettings[0]);
+	
+	startButton.dataset.game = 'play-game';
+	startButton.innerHTML = 'Next round';
+	roundDisplay.innerHTML = 'Round 1';
+	animation(modal, 'zoom-out', function(element) {
+			element.style.display = 'none';
+			controlsStatus('on');
+			triggerRound();
+			clearList();
+	});
+}
+
+
+
+function triggerRound() {
+	animation(roundDisplay, function(element){
+		element.style.display = 'block';
+	}, 'zoom-in', 'zoom-out', function(element) {
 		countDown();
 	});
 }
@@ -50,11 +89,13 @@ function blinkWinner(winnerFigure) {
 	if (winner.length === 1) {
 		animation(winner[0], 'blink', function() {
 			nextRound();
+			updateList(winner[0].parentNode);
 		});
 	} else {
 		setTimeout(function(){
 			nextRound();
-		}, 1000);
+			updateList();
+		}, 2400);
 	}
 }
 
@@ -62,10 +103,27 @@ function blinkWinner(winnerFigure) {
 function nextRound() {
 	animation(countdown, 'zoom-out', function(element){
 		element.style.display = 'none';
-		roundDisplay.innerHTML = 'Round ' + (rounds.length + 1);
-		animation(startButton, function(element) {
-			element.style.display = 'block';
-		},'move-up-in');
+		
+
+		if (rounds.length >= parseInt(gameSettings[1], 10)) {
+			
+			roundDisplay.innerHTML = 'Start new game';
+			rounds.splice(0, rounds.length);
+			gameSettings.splice(0, gameSettings.length);
+			startButton.innerHTML = 'New game';
+			console.log(rounds.length, gameSettings);
+
+			animation(startButton, function(element) {
+				startButton.dataset.game = 'new-game';
+				element.style.display = 'block';
+			},'move-up-in');
+		} else {
+			console.log(rounds.length, parseInt(gameSettings[1], 10));
+			roundDisplay.innerHTML = 'Round ' + (rounds.length + 1);
+			animation(startButton, function(element) {
+				element.style.display = 'block';
+			},'move-up-in');	
+		}
 	});
 
 		
@@ -78,31 +136,34 @@ function nextRound() {
 //
 
 var figures = ['scissors', 'paper', 'rock'],
-	rounds = [];
+	rounds = [],
+	gameSettings = [];
 
 
 function getWinner(playerFigure) {
 	var player = playerFigure,
-		oponent = oponentFigure(),
-		round = {
-			playerOne : player,
-			playerTwo : oponent
-		};
-	rounds.push(round);
-	console.log(rounds);
+		oponent = oponentFigure();
+
+	controlsStatus('off');
 
 	if ( player === oponent - 1 || player === 2 && oponent === 0 ){
 		blinkWinner(figures[player]);
+		rounds.push('player');
 		return 'You win';
 	} else if ( player === oponent) {
 		blinkWinner(figures[player]);
+		rounds.push('draw');
 		return 'Draw';
 	} else {
 		blinkWinner(figures[oponent]);
+		rounds.push('cpu');
 		return 'You lost';
 	}
 }
 
+function gameWinner() {
+
+}
 
 function oponentFigure() {
 	var number = Math.floor(Math.random() * 3),
@@ -112,13 +173,87 @@ function oponentFigure() {
 	return number;
 }
 
+function setGame(formData) {
+	var data = formData;
+  	for (var i = 0; i < data.length; i++) {
+    	gameSettings.push(data[i].value);
+  	}
+}
+
+
+//
+//  User Interface
+//  - moves history
+//
+
+function updateList(winner) {
+	var player = [].slice.call(document.querySelectorAll('.player')),
+		index = player.indexOf(winner);
+
+	
+	if (index > -1) {
+  		player.splice(index, 1);
+  		player.unshift(winner);
+	}
+
+	for (var i = 0; i < player.length; i++) {
+		var figuresList = document.querySelector('#' + player[i].id + ' .latest-moves ul'),
+			figure = document.createElement('li'),
+			nodes = figuresList.getElementsByTagName('li');
+
+		if ( i === 0 && index > -1 ) {
+			figure.classList.add('win');
+		}
+		figure.innerHTML = '<i class="far fa-hand-' + getFigure(player[i].id) + '"></i>';
+
+		if ( nodes.length === 3 ) {
+			figuresList.removeChild(nodes[2]);
+		}	
+		figuresList.insertBefore(figure, figuresList.firstChild).style.display = 'none';
+		animation(figure, function() {
+			figure.style.display = 'flex';
+			//nodes[1].classList.remove('win');
+		},'zoom-in');
+	}
+}
+
+function clearList() {
+	var figuresList = document.querySelectorAll('.latest-moves ul');
+
+	for (var i = 0; i < figuresList.length; i++) {
+		while (figuresList[i].firstChild) {
+    		figuresList[i].removeChild(figuresList[i].firstChild);
+		}
+		
+	}
+	console.log(figuresList);
+}
+
+
+
+function playerName(player, nameString) {
+	var nameElement = document.querySelector('#' + player + ' span');
+
+	nameElement.innerHTML = nameString;
+}
 
 //
 //  Controls
-//  - Mouse wheel
+//  - check is controls needed
 //
 
-onWheelEvent(circle, function(element, direction){
+function controlsStatus(status) {
+	circle = document.querySelector('.circle');
+
+	if (status === 'on') {
+		onWheelEvent(circle, eventDirection);	
+	} else if (status === 'off') {
+		onWheelEvent(circle, eventDirection, 'remove');
+	}
+}
+
+
+function eventDirection(element, direction){
 	var icon = element.getElementsByTagName('i')[0];
 
 	if (direction === 'up') {
@@ -130,13 +265,27 @@ onWheelEvent(circle, function(element, direction){
 			controlsFigure(element,  'down');
 		}, 'move-down-in' );
 	}
-})
+}
 
 
+//
+//  Controls
+//  - wheel event controls
+//
 
 function onWheelEvent(domObject, callback){
 	var element = domObject,
-		events = [],
+	 	args = [].slice.call(arguments)
+
+	if (args.indexOf('remove') > -1) {
+		// element.removeEventListener('wheel', wheelEventHandler);
+		var clone = element.cloneNode(true);
+
+		element.parentNode.replaceChild(clone, element);
+  		return;
+	}
+	console.log('add');
+	var events = [],
 		threshold = 300;
 		
 	element.addEventListener('wheel', wheelEventHandler);
@@ -194,8 +343,7 @@ function nextInStack(element, toDo, callback) {
 	var stack = toDo,
 		toRemove = stack[0],
 		limiter = 1;
-
-		
+	
 	if (typeof stack[0] === 'function'){
 		(stack.shift())(element);
 		nextInStack(element, stack, callback);
@@ -222,11 +370,13 @@ function nextInStack(element, toDo, callback) {
 
 
 function findClassByString(classes, string) {
+	var found = [];
 	for (var i = 0; i < classes.length; i++) {
 		if (classes[i].search(string) === 0) {
-			return classes[i];
+			found.push(classes[i]);	
 		}	
 	}
+	return found;
 }
 
 
@@ -238,7 +388,6 @@ function findClassByString(classes, string) {
 var pointer = 0;
 
 function controlsFigure(icon, direction) {
-	
 
 	if ( direction === 'up' && pointer < 2 ){
 		pointer += 1;
@@ -287,14 +436,20 @@ function setFigure(icon, figureNumber) {
 
 function getFigure(playerId) {
 	var element = document.getElementById(playerId);
-
 	return element.querySelector('.circle').dataset.figure;
 }
 
 function removeFigureClass(icon) {
 	var figureClass = findClassByString(icon.classList, 'fa-');
-		icon.classList.remove(figureClass);
+	icon.classList.remove(figureClass.join());	
 }
+
+//
+// Utilities - Figure getter
+// - get figure by player id
+//
+
+
 
 /*
 
@@ -349,23 +504,6 @@ function display(type) {
 		return "none";
 	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function fadeIn (element, callback) {
 	if (typeof element === 'object') {

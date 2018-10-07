@@ -3,7 +3,9 @@ $font-stack: 'Poppins', sans-serif;
 
 /* Main color sheme */
 $primary-color: #d186ab;
+$primary-color-rgba: rgba( 209, 134, 171, 0.9);
 $secondary-color: #44303a;
+$tertiary-color: #dca0be;
 $light-text: #f6deea;
 
 /* Mixins for circles */
@@ -37,6 +39,15 @@ body {
 }
 
 .player {
+	> span {
+		font-size: 10px;
+		font-weight: 700;
+		color: #fff;
+		text-align: center;
+		padding:10px;
+		background-color: $tertiary-color;
+		border-radius: 15px;
+	}
 	.circle {
 		@include circle(300px);
 		cursor: pointer;
@@ -87,6 +98,7 @@ body {
 			justify-content: flex-start;
 			padding: 0;
 			margin: 0;
+			min-height: 60px;
 			li {
 				display: flex;
 				justify-content: center;
@@ -96,7 +108,8 @@ body {
 				width: 50px;
 				height: 50px;
 				border-radius: 10px;
-				&.latest, &:hover {
+				@include animation(zoom-in, .2s);
+				&.win {
 					background-color: $secondary-color;
 					color: $primary-color;
 				}
@@ -114,7 +127,6 @@ body {
 	height: 300px;
 	line-height: 70px;
 	.start-button {
-		width: 100px;
 		height: 50px;
 		background-color: $light-text;
 		&:focus {
@@ -127,21 +139,24 @@ body {
 		color: $light-text;
 		h1 {
 			font-size: 30px;
+			display: none;
 			&.zoom-in {
-				@include animation(zoom-in, .9s);
+				@include animation(zoom-in, .7s);
+				animation-timing-function: cubic-bezier(.8,-0.49,.36,1);
 			}
 			&.zoom-out {
-				@include animation(zoom-out, .9s);
+				@include animation(zoom-out, .7s);
 			}
 		}
 		.countdown {
 			font-size: 120px;
 			display: none; 
 			&.zoom-in {
-				@include animation(zoom-in, .9s);
+				@include animation(zoom-in, .7s);
+				animation-timing-function: cubic-bezier(.8,-0.49,.36,1);
 			}
 			&.zoom-out {
-				@include animation(zoom-out, .9s);
+				@include animation(zoom-out, .7s);
 			}
 		}
 	}
@@ -152,9 +167,56 @@ body {
 			@include animation(move-down-out, .1s);
 		}
 		&.move-up-in {
-			@include animation(move-up-in, .1s);
+			@include animation(move-up-in, .2s);
 		}
 	
+	}
+}
+
+.modal {
+	background-color: $primary-color-rgba;
+	display: none;
+	&.zoom-in {
+		@include animation(zoom-in, .2s);
+	}
+	&.zoom-out {
+		@include animation(zoom-out, .2s);
+	}
+	input {
+		font-size: 100px;
+		color: $light-text;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		border-radius: 20px;
+		padding: 10px 30px;
+		&:focus {
+			background-color: $tertiary-color;
+		}
+		&::placeholder {
+			color: $light-text;
+			opacity: 0.2;
+		}
+	}
+	label {
+		font-size: 10px;
+		font-weight: 700;
+		padding: 0 40px;
+	}
+}
+
+footer {
+	position:absolute;
+	bottom: 0;
+	padding: 20px;
+	font-size: 10px;
+	font-weight: 700;
+	width: 100%;
+	.tips {
+		float: left;
+	}
+	.copy {
+		float: right;
 	}
 }
 
@@ -180,15 +242,6 @@ body {
 
 			}
 
-			25% { 
-				opacity: 0.25;
-				transform: matrix(5, 0, 0, 5, 0, 0);
-			}
-
-			50% { 
-				opacity: 0.50;
-				transform: matrix(3, 0, 0, 3, 0, 0);
-			}
 			100% { 
 				opacity: 1; 
 				transform: matrix(1, 0, 0, 1, 0, 0);

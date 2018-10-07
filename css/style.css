@@ -17,6 +17,16 @@ body {
   overflow: hidden;
 }
 
+.player > span {
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  background-color: #dca0be;
+  border-radius: 15px;
+}
+
 .player .circle {
   width: 300px;
   height: 300px;
@@ -99,6 +109,7 @@ body {
       justify-content: flex-start;
   padding: 0;
   margin: 0;
+  min-height: 60px;
 }
 
 .player .latest-moves ul li {
@@ -113,9 +124,13 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 10px;
+  animation-name: zoom-in;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
-.player .latest-moves ul li.latest, .player .latest-moves ul li:hover {
+.player .latest-moves ul li.win {
   background-color: #44303a;
   color: #d186ab;
 }
@@ -135,7 +150,6 @@ body {
 }
 
 .game-display .start-button {
-  width: 100px;
   height: 50px;
   background-color: #f6deea;
 }
@@ -152,18 +166,20 @@ body {
 
 .game-display .round h1 {
   font-size: 30px;
+  display: none;
 }
 
 .game-display .round h1.zoom-in {
   animation-name: zoom-in;
-  animation-duration: 0.9s;
+  animation-duration: 0.7s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.8, -0.49, 0.36, 1);
 }
 
 .game-display .round h1.zoom-out {
   animation-name: zoom-out;
-  animation-duration: 0.9s;
+  animation-duration: 0.7s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -175,14 +191,15 @@ body {
 
 .game-display .round .countdown.zoom-in {
   animation-name: zoom-in;
-  animation-duration: 0.9s;
+  animation-duration: 0.7s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.8, -0.49, 0.36, 1);
 }
 
 .game-display .round .countdown.zoom-out {
   animation-name: zoom-out;
-  animation-duration: 0.9s;
+  animation-duration: 0.7s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
 }
@@ -201,9 +218,75 @@ body {
 
 .game-display .start-button.move-up-in {
   animation-name: move-up-in;
-  animation-duration: 0.1s;
+  animation-duration: 0.2s;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+}
+
+.modal {
+  background-color: rgba(209, 134, 171, 0.9);
+  display: none;
+}
+
+.modal.zoom-in {
+  animation-name: zoom-in;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.modal.zoom-out {
+  animation-name: zoom-out;
+  animation-duration: 0.2s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+.modal input {
+  font-size: 100px;
+  color: #f6deea;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  padding: 10px 30px;
+}
+
+.modal input:focus {
+  background-color: #dca0be;
+}
+
+.modal input:-ms-input-placeholder {
+  color: #f6deea;
+  opacity: 0.2;
+}
+
+.modal input::placeholder {
+  color: #f6deea;
+  opacity: 0.2;
+}
+
+.modal label {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0 40px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  padding: 20px;
+  font-size: 10px;
+  font-weight: 700;
+  width: 100%;
+}
+
+footer .tips {
+  float: left;
+}
+
+footer .copy {
+  float: right;
 }
 
 @keyframes zoom-out {
@@ -221,14 +304,6 @@ body {
   0% {
     opacity: 0;
     transform: matrix(10, 0, 0, 10, 0, 0);
-  }
-  25% {
-    opacity: 0.25;
-    transform: matrix(5, 0, 0, 5, 0, 0);
-  }
-  50% {
-    opacity: 0.50;
-    transform: matrix(3, 0, 0, 3, 0, 0);
   }
   100% {
     opacity: 1;
