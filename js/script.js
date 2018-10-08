@@ -3,9 +3,8 @@ var startButton = document.getElementById('round'),
 	roundDisplay = document.querySelector('.round h1'),
 	countdown = document.querySelector('.countdown'),
 	circle = document.querySelector('.circle'),
-	modal = document.querySelector('.modal');
-
-var form = document.getElementById("form"),
+	modal = document.querySelector('.modal'),
+	form = document.getElementById("form"),
  	data = document.getElementsByClassName("data");
 
 startButton.addEventListener("click", function(event){
