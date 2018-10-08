@@ -8,20 +8,23 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>
 	<body>
-	<div id="modal" class="container h-100 modal">
-		<div class="row">
-			<div class="col-8 justify-content-center align-items-center ">
-				<form id="form">
-					<div class="form-group">
-						<input id="name" class="data" placeholder="Player name"></input>
-						<label for="name">Player name</label>
-					</div>
-					<div class="form-group">
-						<input id="rounds" type="number" class="data" placeholder="Rounds number"></input>
-						<label for="rounds">Round number</label>
-					</div>	
-					<button class="btn start-button">New game</button>
-				</form>
+	<div id="modal" class="container-fluid modal">
+		<div class="close-modal"><i class="fas fa-times"></i></div>
+		<div class="container h-100 d-flex">
+			<div class="row">
+				<div class="col-md-10 offset-md-1 d-flex justify-content-center align-items-center ">
+					<form id="form">
+						<div class="form-group">
+							<input id="name" class="data" placeholder="Player name"></input>
+							<label for="name">Player name</label>
+						</div>
+						<div class="form-group">
+							<input id="rounds" type="number" class="data" placeholder="Rounds number"></input>
+							<label for="rounds">Round number</label>
+						</div>	
+						<button class="btn start-button">New game</button>
+					</form>
+				</div>
 			</div>
 		</div>		
 	</div>
@@ -60,7 +63,7 @@
 							<h2>Scissors</h2>
 						</div>
 						<div class="latest-moves">
-							<span>Your moves:</span>
+							<span>Oponent moves:</span>
 							<ul>
 								
 							</ul>
@@ -71,7 +74,7 @@
 		</div>
 	</div>
 	<footer>
-		<span class="tips"><i class="fas fa-keyboard"></i> Use keyboard 'w' and 's' buttons or <i class="fas fa-arrows-alt-v"></i> scroll with mouse on player circle</span>
+		<span class="tips"><i class="fas fa-keyboard"></i> Use keyboard 'w' and 's' buttons or <i class="fas fa-arrows-alt-v"></i> mouse scroll on player circle</span>
 		<span class="copy"><strong>rockPaperScissors </strong>2018 Copyright &copy;</span>
 	</footer>
 	<script src='https://code.jquery.com/jquery-3.3.1.slim.min.js'></script>

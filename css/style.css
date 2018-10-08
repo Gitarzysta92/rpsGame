@@ -242,34 +242,61 @@ body {
   animation-fill-mode: forwards;
 }
 
-.modal input {
+.modal .close-modal {
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  cursor: pointer;
+}
+
+.modal form {
+  text-align: center;
+}
+
+.modal form input {
+  width: 100%;
   font-size: 100px;
+  text-align: center;
   color: #f6deea;
   background-color: transparent;
   border: none;
   outline: none;
-  border-radius: 20px;
   padding: 10px 30px;
 }
 
-.modal input:focus {
+.modal form input:focus {
   background-color: #dca0be;
 }
 
-.modal input:-ms-input-placeholder {
+.modal form input:-ms-input-placeholder {
   color: #f6deea;
   opacity: 0.2;
 }
 
-.modal input::placeholder {
+.modal form input::placeholder {
   color: #f6deea;
   opacity: 0.2;
 }
 
-.modal label {
+.modal form label {
   font-size: 10px;
   font-weight: 700;
-  padding: 0 40px;
+  padding: 20px 40px;
+}
+
+.modal form button {
+  padding: 10px 30px;
+  border: solid 3px #dca0be;
+  border-radius: 15px;
+  background-color: transparent;
+  font-size: 20px;
+  font-weight: 700;
+  color: #f6deea;
+}
+
+.modal form button:hover {
+  background-color: #f6deea;
+  color: #44303a;
 }
 
 footer {

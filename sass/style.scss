@@ -182,27 +182,50 @@ body {
 	&.zoom-out {
 		@include animation(zoom-out, .2s);
 	}
-	input {
-		font-size: 100px;
-		color: $light-text;
-		background-color: transparent;
-		border: none;
-		outline: none;
-		border-radius: 20px;
-		padding: 10px 30px;
-		&:focus {
-			background-color: $tertiary-color;
-		}
-		&::placeholder {
+	.close-modal {
+		position: absolute;
+		top: 50px;
+		right: 50px;
+		cursor: pointer;
+	}
+	form {
+		text-align: center;
+		input {
+			width: 100%;
+			font-size: 100px;
+			text-align: center;
 			color: $light-text;
-			opacity: 0.2;
+			background-color: transparent;
+			border: none;
+			outline: none;
+			padding: 10px 30px;
+			&:focus {
+				background-color: $tertiary-color;
+			}
+			&::placeholder {
+				color: $light-text;
+				opacity: 0.2;
+			}
 		}
-	}
-	label {
-		font-size: 10px;
-		font-weight: 700;
-		padding: 0 40px;
-	}
+		label {
+			font-size: 10px;
+			font-weight: 700;
+			padding: 20px 40px;
+		}
+		button {
+			padding: 10px 30px;
+			border: solid 3px $tertiary-color;
+			border-radius: 15px;
+			background-color: transparent;
+			font-size: 20px;
+			font-weight: 700;
+			color: $light-text;
+			&:hover {
+				background-color: $light-text;
+				color: $secondary-color;
+			}
+		}
+	}	
 }
 
 footer {

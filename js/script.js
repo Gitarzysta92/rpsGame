@@ -13,11 +13,8 @@ startButton.addEventListener("click", function(event){
 	if ( event.target.dataset.game === 'new-game' ) {
 		animation(this, 'move-down-out', function(element) {
 			element.style.display = 'none';
+			modalWindow('on');
 		});
-		animation(modal, function(element) {
-			element.style.display = 'flex';
-			form.addEventListener('submit', onFormSubmit);
-		},'zoom-in');
 	} else if ( event.target.dataset.game === 'play-game' ) {
 		animation(this, 'move-down-out', function(element) {
 			element.style.display = 'none';
@@ -102,20 +99,8 @@ function blinkWinner(winnerFigure) {
 function nextRound() {
 	animation(countdown, 'zoom-out', function(element){
 		element.style.display = 'none';
-		
-
 		if (rounds.length >= parseInt(gameSettings[1], 10)) {
-			
-			roundDisplay.innerHTML = 'Start new game';
-			rounds.splice(0, rounds.length);
-			gameSettings.splice(0, gameSettings.length);
-			startButton.innerHTML = 'New game';
-			console.log(rounds.length, gameSettings);
-
-			animation(startButton, function(element) {
-				startButton.dataset.game = 'new-game';
-				element.style.display = 'block';
-			},'move-up-in');
+			setNewGame();
 		} else {
 			console.log(rounds.length, parseInt(gameSettings[1], 10));
 			roundDisplay.innerHTML = 'Round ' + (rounds.length + 1);
@@ -144,6 +129,7 @@ function getWinner(playerFigure) {
 		oponent = oponentFigure();
 
 	controlsStatus('off');
+	clearAnimation( circle.querySelector('i'), 'move-');
 
 	if ( player === oponent - 1 || player === 2 && oponent === 0 ){
 		blinkWinner(figures[player]);
@@ -184,6 +170,39 @@ function setGame(formData) {
 //  User Interface
 //  - moves history
 //
+
+function modalWindow(status) {
+	if ( status === 'on' ) {
+		animation(modal, function(element) {
+			var closeButton = element.querySelector('.close-modal');
+			element.style.display = 'block';
+			form.addEventListener('submit', onFormSubmit);
+			closeButton.addEventListener('click', function(){
+				modalWindow('off');
+			})
+		},'zoom-in');
+	} else if( status === 'off' ) {
+		animation(modal,'zoom-out', function(element) {
+			element.style.display = 'none';
+			form.removeEventListener('submit', onFormSubmit);
+			animation(startButton, function(element) {
+				element.style.display = 'block';
+			},'move-up-in');	
+		});
+	}	
+}
+
+function setNewGame() {
+	roundDisplay.innerHTML = 'Start new game';
+	rounds.splice(0, rounds.length);
+	gameSettings.splice(0, gameSettings.length);
+	startButton.innerHTML = 'New game';
+
+	animation(startButton, function(element) {
+		startButton.dataset.game = 'new-game';
+		element.style.display = 'block';
+	},'move-up-in');
+}
 
 function updateList(winner) {
 	var player = [].slice.call(document.querySelectorAll('.player')),
@@ -380,6 +399,21 @@ function nextInStack(element, toDo, callback) {
 		callback();
 		return;
 	}
+}
+
+//
+// Animations
+// - force remove animation class
+//
+
+function clearAnimation(element, string) {
+	var classes = element.classList,
+		toRemove = findClassByString(classes, string);
+	
+	if (toRemove.length > 0) {
+		element.classList.remove(toRemove);
+		console.log(toRemove);
+	}	
 }
 
 
