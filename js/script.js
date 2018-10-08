@@ -411,8 +411,8 @@ function clearAnimation(element, string) {
 		toRemove = findClassByString(classes, string);
 	
 	if (toRemove.length > 0) {
-		element.classList.remove(toRemove);
-		console.log(toRemove);
+		element.classList.remove(toRemove.join());
+		console.log(element.classList);
 	}	
 }
 
