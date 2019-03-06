@@ -1,0 +1,913 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"co",
+				"constructor"
+			],
+			[
+				"nex",
+				"nextRound"
+			],
+			[
+				"next",
+				"nextInStack"
+			],
+			[
+				"curre",
+				"currentFunction"
+			],
+			[
+				"eve",
+				"eventSubscribers"
+			],
+			[
+				"re",
+				"recursiveFunctionCaller"
+			],
+			[
+				"fu",
+				"functionsArray"
+			],
+			[
+				"add",
+				"addEventListener"
+			],
+			[
+				"on",
+				"onclickAction"
+			],
+			[
+				"start",
+				"startButton"
+			],
+			[
+				"align",
+				"align-items\tproperty"
+			],
+			[
+				"inli",
+				"inline-block\tdisplay"
+			],
+			[
+				"flex",
+				"flex-direction\tproperty"
+			],
+			[
+				"bac",
+				"background-color\tproperty"
+			],
+			[
+				"impo",
+				"importedModules"
+			],
+			[
+				"sessi",
+				"sessionToken"
+			],
+			[
+				"se",
+				"setupRouter"
+			],
+			[
+				"sess",
+				"sessionToken"
+			],
+			[
+				"au",
+				"authorized"
+			],
+			[
+				"u",
+				"unAuthorize"
+			],
+			[
+				"Aut",
+				"AuthRouter"
+			],
+			[
+				"r",
+				"redirectToPrevPage"
+			],
+			[
+				"hand",
+				"handleSubmit"
+			],
+			[
+				"modu",
+				"modulesList"
+			],
+			[
+				"rou",
+				"routeObject"
+			],
+			[
+				"con",
+				"controllers"
+			],
+			[
+				"route",
+				"routeObject"
+			],
+			[
+				"req",
+				"requestsLog"
+			],
+			[
+				"main",
+				"mainController"
+			],
+			[
+				"ac",
+				"accessModel"
+			],
+			[
+				"access",
+				"accessLevel"
+			],
+			[
+				"user",
+				"userSession"
+			],
+			[
+				"query",
+				"queryObj"
+			],
+			[
+				"userSess",
+				"userSessionExists"
+			],
+			[
+				"p",
+				"permissions"
+			],
+			[
+				"regi",
+				"registerMiddlewares"
+			],
+			[
+				"mi",
+				"middleware"
+			],
+			[
+				"che",
+				"checkRouteAndType"
+			],
+			[
+				"rout",
+				"route"
+			],
+			[
+				"author",
+				"authorization"
+			],
+			[
+				"acc",
+				"access"
+			],
+			[
+				"collec",
+				"collectionName"
+			],
+			[
+				"up",
+				"updateOne"
+			],
+			[
+				"colle",
+				"collectionName"
+			],
+			[
+				"express",
+				"expressInstance"
+			],
+			[
+				"client",
+				"clientToken"
+			],
+			[
+				"get",
+				"getClientApp"
+			],
+			[
+				"db",
+				"dbInstance"
+			],
+			[
+				"http",
+				"httpAuthorizer"
+			],
+			[
+				"A",
+				"Application"
+			],
+			[
+				"event",
+				"eventEmitter"
+			],
+			[
+				"mongo",
+				"mongoInstance"
+			],
+			[
+				"mong",
+				"mongoConfing"
+			],
+			[
+				"contro",
+				"controllerObject"
+			],
+			[
+				"Ma",
+				"MainController"
+			],
+			[
+				"reg",
+				"registerRoutes"
+			],
+			[
+				"app",
+				"application"
+			],
+			[
+				"ge",
+				"getRouter"
+			],
+			[
+				"global",
+				"globalRouter"
+			],
+			[
+				"globa",
+				"globalRouter"
+			],
+			[
+				"module",
+				"moduleObject"
+			],
+			[
+				"mod",
+				"modulesList"
+			],
+			[
+				"server",
+				"serverInit"
+			],
+			[
+				"pu",
+				"published"
+			],
+			[
+				"de",
+				"dependency"
+			],
+			[
+				"dep",
+				"dependency"
+			],
+			[
+				"depe",
+				"dependency"
+			],
+			[
+				"cu",
+				"circular"
+			],
+			[
+				"check",
+				"checkDependency"
+			],
+			[
+				"o",
+				"Object"
+			],
+			[
+				"elem",
+				"elementProperty"
+			],
+			[
+				"qu",
+				"queryProperty"
+			],
+			[
+				"ele",
+				"elementProperty"
+			],
+			[
+				"_",
+				"_dependencyQuery"
+			],
+			[
+				"load",
+				"loadDependencies"
+			],
+			[
+				"modules",
+				"modulesArray"
+			],
+			[
+				"Mod",
+				"ModuleInterface"
+			],
+			[
+				"i",
+				"interfaceDirectory"
+			],
+			[
+				"ex",
+				"expectationsArray"
+			],
+			[
+				"ig",
+				"ignorePattern"
+			],
+			[
+				"path",
+				"pathList"
+			],
+			[
+				"O",
+				"object"
+			],
+			[
+				"git",
+				"gitignore"
+			],
+			[
+				"node",
+				"node_modules"
+			],
+			[
+				"curr",
+				"currentElement"
+			],
+			[
+				"list",
+				"listFiles"
+			],
+			[
+				"cur",
+				"currentPath"
+			],
+			[
+				"stye",
+				"stylePoints"
+			],
+			[
+				"distance",
+				"distancePoints"
+			],
+			[
+				"ob",
+				"observers"
+			],
+			[
+				"su",
+				"Subject"
+			],
+			[
+				"obse",
+				"observer"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"remove",
+				"removeAt"
+			],
+			[
+				"observer",
+				"observers"
+			],
+			[
+				"Obs",
+				"ObserversList"
+			],
+			[
+				"rq",
+				"require"
+			],
+			[
+				"coun",
+				"countriesReducer"
+			],
+			[
+				"c",
+				"countriesReducer"
+			],
+			[
+				"S",
+				"SEARCH_COUNTRIES"
+			],
+			[
+				"d",
+				"DELETE_COUNTRY"
+			],
+			[
+				"GET_C",
+				"GET_COUNTRY"
+			],
+			[
+				"getC",
+				"getCountries"
+			],
+			[
+				"GE",
+				"GET_COUNTRIES"
+			],
+			[
+				"THU",
+				"THUMB_DOWN_COMMENT"
+			],
+			[
+				"T",
+				"THUMB_DOWN_COMMENT"
+			],
+			[
+				"TH",
+				"THUMB_UP_COMMENT"
+			],
+			[
+				"Messa",
+				"MessageForm"
+			],
+			[
+				"Us",
+				"usersService"
+			],
+			[
+				"walkre",
+				"walkerVT"
+			],
+			[
+				"read",
+				"readDir"
+			],
+			[
+				"db_",
+				"db_instance"
+			],
+			[
+				"text",
+				"text-align\tproperty"
+			],
+			[
+				"env",
+				"environment"
+			],
+			[
+				"Stop",
+				"Stopwatch"
+			],
+			[
+				"wa",
+				"watchDisplay"
+			],
+			[
+				"handle",
+				"handleKeyUp"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"in",
+				"inline"
+			],
+			[
+				"te",
+				"tertiary-color"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"border",
+				"border-radius"
+			],
+			[
+				"index",
+				"indexOf"
+			],
+			[
+				"sty",
+				"setDisplay"
+			],
+			[
+				"getElement",
+				"getElementsByTagName"
+			],
+			[
+				"create",
+				"createClass"
+			],
+			[
+				"requ",
+				"require"
+			],
+			[
+				"quote",
+				"quoteAuthor"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "webpack.config.js",
+			"settings":
+			{
+				"buffer_size": 686,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pac",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 171.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/js/script.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/package.json",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts-box.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/custom.css",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts-carousel.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/marlee-core.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/marlee-core.pot",
+		"/C/Users/mluka/OneDrive/Desktop/kodilla/modules-exercises/.gitignore",
+		"/C/Users/mluka/OneDrive/Desktop/stefan/hello.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/category.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/author_backup.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/author.php",
+		"/C/Users/mluka/OneDrive/Desktop/test/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/single.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/custom.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/frontend.popup.min.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/admin.popup.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/frontend.dummy.popup.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/popup.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/popupHtml.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/frontend.popup.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/common.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/progressmeter.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/core.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/top-bar.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/functions.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/footer.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/header.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/es-widget-page.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/main.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/sendmail.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/es-loadwidget.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/template-preview.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/sentmail.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/email-subscribers.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/es-sendmail.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/es-widget.css",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/tools.php",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/app.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/CommentContainer.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/comment.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/globalReducer.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/CommentsListContainer.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/App.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/CommentsList.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/index.css",
+		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/comments.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/auth.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/utils/apiCaller.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/reducer.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-20/src/reducers/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/controller/mainController.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/auth-cookie.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/flux/store-provider.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/index.php",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/utils/cookieSetter.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/system/index.js",
+		"/C/Users/mluka/AppData/Local/Temp/MarkdownPadPreview.html",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/auth-route.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/containers/pinned-news.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/containers/single-news.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/pinned.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/news-feed.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/news-container.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/board-container.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/app.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/layout.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/main.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/lib/mod-container.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/cooboard/board.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/modules.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/components/main-menu.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/lib/modules.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/login.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/register.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login-page.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/components/layout.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/server/server.mod.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/router/globalRouter.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/login-page.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/partials/form-input-subtext.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/logout.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/webpack.config.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login-form.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/register-form.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/partials/input-text.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/style.scss",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/submit-button.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/input-password.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/input-email.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/form-input-subtext.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/form-policy.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/.babelrc",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/form.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/apps.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/containers/main/main.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/package.json",
+		"/C/Users/mluka/OneDrive/Desktop/reactApp/package.json",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/views/layouts/main.hbs",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/controllers/board.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/server/routes.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/views/login.hbs",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/js/app.js",
+		"/C/Users/mluka/OneDrive/Desktop/reactApp/webpack.config.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/controllers/home.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/footer.php",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/head.php",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/index.php",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/services/userService/lib/userService.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/services/userService/userService.routes.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/services/userService/userService.controller.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/app.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/server/config.js"
+	],
+	"find":
+	{
+		"height": 56.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"by",
+			"marlee_posted_by",
+			"by",
+			"<?php get_sidebar(); ?>",
+			"close",
+			"_ppsPopupSetActionDone",
+			"ppsPopupSubscribeSuccess",
+			"animateRemovePps",
+			".animateRemovePps",
+			".ppsHideAfterSubscribe",
+			".ppsSubMsg",
+			"ppsSuccessMsg",
+			"ppsSubMsg",
+			"_ppsPopupAddStat",
+			"subscribe",
+			"subscribed",
+			"_ppsPopupSetActionDone",
+			"smType",
+			"ppsAfterPopupsActionDone",
+			"ppsBindPopupClose",
+			"ppsPopupSubscribeSuccess",
+			"ppsPopupShell",
+			"template",
+			"marlee_script",
+			"wp_enqueue_script()",
+			"marlee-main",
+			"react",
+			"inputEmail",
+			"app",
+			"getUser",
+			"controller",
+			"token",
+			"getApp",
+			"requestList",
+			"aasd",
+			"controller",
+			"content",
+			",",
+			"dirIgnore",
+			"Ignore",
+			"relativePat",
+			"getChildren",
+			"{\n",
+			");\n",
+			"userService",
+			"dir.map",
+			"apply",
+			"super",
+			"reset",
+			"span",
+			"clearList",
+			"startbutton",
+			"startButton",
+			"startbutton",
+			"b",
+			"setFigure",
+			" &&",
+			"\t\t\n",
+			"up",
+			"));\n",
+			"limiter",
+			"\"",
+			");\n"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "webpack.config.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 686,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								464,
+								464
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 28.0
+	},
+	"input":
+	{
+		"height": 56.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "",
+	"replace":
+	{
+		"height": 52.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 244.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

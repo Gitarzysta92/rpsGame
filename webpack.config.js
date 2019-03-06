@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin'),
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeJsPlugin = require('optimize-js-plugin');
 
 const plugins = [
@@ -7,7 +7,7 @@ const plugins = [
 		template: './src/index.html',
 		filename: 'index.html',
 		inject: 'body'
-	});
+	})
 ]
 
 
@@ -25,14 +25,24 @@ module.exports = {
 				loader: 'babel-loader'
 			},
 			{
+				test: /\.css$/,
+				use: ['style-loader', 'css-loader']
+			},
+			{
 				test: /\.scss$/,
 				use: [
+					{	
+						loader: 'style-loader'
+					},
 					{
 						loader: 'css-loader',
 						options: {
 							modules: false,
 							sourceMap: true
 						}
+					},
+					{	
+						loader: 'sass-loader'
 					}
 				]
 			}
