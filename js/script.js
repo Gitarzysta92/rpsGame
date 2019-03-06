@@ -1,4 +1,213 @@
 "use strict";
+
+
+const gameContainer = document.getElementById('rps');
+
+
+class Controller {
+	constructor () {
+
+	}
+
+	prepareAction(type, subscribers) {
+		const action = function(event) {
+			const self = this;
+			const eventType = type;
+			const eventSubscribers = subscribers.map(current => {		
+				const prepared = function(next) {
+					const context = self;
+					const eventData = event;
+					current(eventData, context, next);
+					return next;
+				}
+				return prepared;
+			});
+			recursiveFunctionCaller(eventSubscribers);
+		}
+		return action;
+	}
+
+	recursiveFunctionCaller(functionsArray) {
+		if (functionsArray.length === 0) return;
+		const stack = functionsArray;
+		const currentFunction = stack.shift();
+
+		const nextInStack = function() {
+			recursiveFunctionCaller(stack);
+		}
+		//console.log(currentFunction);
+		currentFunction(nextInStack);
+
+	}
+
+}
+
+const appController = new Controller();
+
+
+// Wrapper for dom elements
+// handle state and events listeners
+class elementWrapper {
+	constructor({domElement, events}) {
+		this.state = {};
+		this._dom = domElement;
+		if (events) {
+			this.bindEvents(events);
+		}
+	}
+
+	bindEvents(events) {
+		events.forEach(current => this.addEvent(current));
+	}
+
+	addEvent({type, callback}) {
+		this._dom.addEventListener(type, callback.bind(this));
+	}
+	get domInstance() {
+		return this._dom;
+	}
+}
+
+
+// Container for UI elements
+// Provide subscription 
+class View {
+	constructor(domAppContainer) {
+		this._rootElement = domAppContainer;
+		this._viewElements = [];
+	}
+
+	bindElement(id, {events}) {
+		const element = this._rootElement.querySelector(id);
+		if (!element && events.length == 0) {
+			// throw error;
+			return;
+		}
+
+		const wrappedElement = new elementWrapper({
+			domElement: element,
+			events: events.map(current => {
+				return {
+					type: current.type,
+					callback: this.prepareAction(current.type, current.subscribers)
+				}		
+			})
+		});
+		this._viewElements.push(wrappedElement);
+		return wrappedElement;
+	}
+
+	prepareAction(type, subscribers) {
+		const action = function(event) {
+			const self = this;
+			const eventType = type;
+			const eventData = event;
+			subscribers.forEach(current => current(eventData, self));
+		}
+		return action;
+	}
+
+}
+
+
+
+
+
+
+class GameCore {
+	constructor() {
+		
+	}
+
+	action() {}
+
+	start(event, wrapper, next) {
+		//console.log('start game', wrapper, event);
+		animation(wrapper.domInstance, 'move-down-out', function(element) {
+			element.style.display = 'none';
+			next();
+		});
+	}
+
+	nextRound() {
+		console.log('next round');
+	}
+}
+
+const game = new GameCore();
+
+const view = new View(gameContainer);
+
+const start = view.bindElement('#start-button', {
+	events: [
+		{
+			type: "click",
+			subscribers: [ game.start, game.nextRound ],
+		}
+	],
+});
+
+
+//
+// Animations
+// - 
+//
+
+function animation (element, ...steps) {
+	var self = element;
+	if (!element) { 
+		return; 
+	}	
+	nextInStack(self, steps, function(){
+		//console.log('end');	
+	});	
+	
+};	
+
+
+// Iterate over animations stack
+function nextInStack(element, toDo, callback) {
+	var stack = toDo,
+		toRemove = stack[0],
+		limiter = 1;
+	
+	if (typeof stack[0] === 'function'){
+		(stack.shift())(element);
+		nextInStack(element, stack, callback);
+	} else if (typeof stack[0] === 'string') {
+		element.classList.add(stack.shift());
+		element.addEventListener("animationend", function() {
+			if (limiter === 1) {
+				element.classList.remove(toRemove);
+				limiter++
+				nextInStack(element, stack, callback);
+			}	
+		});
+	} else {
+		callback();
+		return;
+	}
+}
+
+//
+// Animations
+// - force remove animation class
+//
+
+function clearAnimation(element, string) {
+	var classes = element.classList,
+		toRemove = findClassByString(classes, string);
+	
+	if (toRemove.length > 0) {
+		element.addEventListener('animationstart', function() {
+			element.classList.remove(toRemove.join());
+			console.log(element.classList);	
+		})
+	}	
+}
+
+/*
+
 var startButton = document.getElementById('round'),
 	roundDisplay = document.querySelector('.round h1'),
 	countdown = document.querySelector('.countdown'),
@@ -23,6 +232,22 @@ startButton.addEventListener("click", function(event){
 		controlsStatus('on');
 	}	
 });
+
+
+const appUi = {
+	startButton: 
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 //
@@ -114,10 +339,20 @@ function nextRound() {
 }
 
 
+
+
 //
-//  Game engine
+//  Game core
 //  - 
 //
+
+class Game {
+	constructor() {
+
+	}
+}
+
+
 
 var figures = ['scissors', 'paper', 'rock'],
 	rounds = [],
@@ -360,61 +595,13 @@ function onWheelEvent(domObject, callback){
 }
 
 
-//
-// Animations
-// - 
-//
-
-function animation (element, ...steps) {
-	var self = element;
-	if (!element) { 
-		return; 
-	}	
-	nextInStack(self, steps, function(){
-		//console.log('end');	
-	});	
-	
-};	
 
 
-// Iterate over animations stack
-function nextInStack(element, toDo, callback) {
-	var stack = toDo,
-		toRemove = stack[0],
-		limiter = 1;
-	
-	if (typeof stack[0] === 'function'){
-		(stack.shift())(element);
-		nextInStack(element, stack, callback);
-	} else if (typeof stack[0] === 'string') {
-		element.classList.add(stack.shift());
-		element.addEventListener("animationend", function() {
-			if (limiter === 1) {
-				element.classList.remove(toRemove);
-				limiter++
-				nextInStack(element, stack, callback);
-			}	
-		});
-	} else {
-		callback();
-		return;
-	}
-}
 
 //
-// Animations
-// - force remove animation class
+// Utilities - Observer
+// - find class by part of it name
 //
-
-function clearAnimation(element, string) {
-	var classes = element.classList,
-		toRemove = findClassByString(classes, string);
-	
-	if (toRemove.length > 0) {
-		element.classList.remove(toRemove.join());
-		console.log(element.classList);
-	}	
-}
 
 
 //
@@ -498,90 +685,4 @@ function removeFigureClass(icon) {
 	icon.classList.remove(figureClass.join());	
 }
 
-//
-// Utilities - Figure getter
-// - get figure by player id
-//
-
-
-
-/*
-
-
-
-
-// Additional options for animation
-// Set display of animated element, based on last animation type
-function setDisplay(element, animations) {
-	var s = animations,
-		first = firstAnimation(s),
-		last = lastAnimation(s);
-		
-
-		if (animations.length <= 1 && first === last && first === 'in' ) {
-			element.style.display = display(first);
-		} else if ( animations.length <= 1 && first === last && first === 'out' ){
-			var divDisplay = function() { 
-				element.style.display = display(last);
-			};
-			return divDisplay;	
-		} else if ( animations.length > 1) {
-			element.style.display = display(first);
-			var divDisplay = function() { 
-				element.style.display = display(last);
-			};
-			return divDisplay;
-		}
-}
-
-
-function firstAnimation(animations) {
-	var firstAnimation = animations[0],
-		first = firstAnimation.split("-");
-		first = first[first.length -1];
-
-		return first;
-}
-
-function lastAnimation(animations) {
-	var lastAnimation = animations[animations.length -1],
-		last = lastAnimation.split("-");
-		last = last[last.length -1];
-		
-		return last;
-}
-
-function display(type) {
-	if (type === 'in'){
-		return  "block";
-	} else if (type === 'out') {
-		return "none";
-	}	
-}
-
-function fadeIn (element, callback) {
-	if (typeof element === 'object') {
-		var self = element;
-		element.classList.add('zoom-in');
-		console.log(self, this);
-		
-	}
-	console.log(typeof element)
-	self.addEventListener("animationend", function() {
-		if (typeof callback === 'function') {
-			var element = self; 
-			self.classList.add('zoom-in');
-			callback(element, callback);
-			console.log('Tutaj z callbackiem ', callback);
-		} else {
-			return;
-		}
-	});
-}
-
 */
-
-
-
-
-
