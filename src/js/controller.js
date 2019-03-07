@@ -16,7 +16,7 @@ class Controller {
 				}
 				return prepared;
 			});
-			recursiveFunctionCaller(eventSubscribers);
+			this.recursiveFunctionCaller(eventSubscribers);
 		}
 		return action;
 	}
@@ -27,7 +27,7 @@ class Controller {
 		const currentFunction = stack.shift();
 
 		const nextInStack = function() {
-			recursiveFunctionCaller(stack);
+			this.recursiveFunctionCaller(stack);
 		}
 		//console.log(currentFunction);
 		currentFunction(nextInStack);
