@@ -1,11 +1,11 @@
 import Controller from './controller.js';
-import View from './view.js';
+import { View, elementWrapper } from './view.js';
 
 
 const gameContainer = document.getElementById('rps');
 
 
-const appController = new Controller();
+const appController = new Controller(View);
 const view = new View(gameContainer);
 
 
@@ -38,7 +38,7 @@ const game = new GameCore();
 
 
 
-const start = view.bindElement('#start-button', {
+const startButton = view.bindElement('#start-button', {
 	events: [
 		{	
 			name: 'start-game',

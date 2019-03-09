@@ -1,6 +1,6 @@
 // Wrapper for dom elements
 // handle state and events listeners
-class elementWrapper {
+class ElementWrapper {
 	constructor({domElement, events}) {
 		this.state = {};
 		this._dom = domElement;
@@ -38,7 +38,6 @@ class elementWrapper {
 		return this._dom;
 	}
 }
-
 
 
 
@@ -82,5 +81,17 @@ class View {
 }
 
 
-export default View;
+class ViewModel {
+	constructor() {
+	}
+	set model() { 
+		this.model = new View;
+	}
+
+	set wrapper()
+}
+
+
+
+export { View, ElementWrapper };
 
