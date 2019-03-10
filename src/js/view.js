@@ -78,20 +78,36 @@ class View {
 		return action;
 	}
 
+	subscribe(action) {
+		
+	}
+
+	actionsInterface() {
+
+	}
+
 }
 
 
-class ViewModel {
-	constructor() {
+class ViewFactory {
+	constructor(rootElement) {
+		this.rootElement = rootElement;
+		this.init();
 	}
-	set model() { 
-		this.model = new View;
+	init() { 
+		this.model = new View(this.rootElement);
 	}
 
-	set wrapper()
+	element(setup) {
+		return new ElementWrapper(setup, this.model.subscribe);
+	}
+
+	get model() {
+		return this.model;
+	}
 }
 
 
 
-export { View, ElementWrapper };
+export default ViewFactory;
 

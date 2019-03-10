@@ -1,13 +1,17 @@
 import Controller from './controller.js';
-import { View, elementWrapper } from './view.js';
+import View from './view.js';
 
 
 const gameContainer = document.getElementById('rps');
 
-
-const appController = new Controller(View);
 const view = new View(gameContainer);
+const controller = new Controller();
 
+view.subscribe(controller);
+
+
+
+controller.defineAction('start-game', GameCore.start);
 
 
 class GameCore {
@@ -38,19 +42,25 @@ const game = new GameCore();
 
 
 
-const startButton = view.bindElement('#start-button', {
+const startButton = view.element({
+	selector: '#start-button',
 	events: [
 		{	
 			name: 'start-game',
 			type: "click",
-			subscribers: [  ],
+			condition: () => this.state === 'start-game'
 		},
 		{	
 			name: 'start-round',
 			type: "click",
-			subscribers: [],
+			condition: () => this.state === 'start-round'
+
 		}
 	],
+	customProperties: {
+		state: 'start-game',
+		togglestate: () => this.state === 'start-game' ? this.state = 
+	}
 });
 
 

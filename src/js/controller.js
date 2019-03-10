@@ -3,6 +3,14 @@ class Controller {
 
 	}
 
+	get {
+		return  this.actionHandler;
+	}
+
+	actionHandler(action) {
+
+	}
+
 	prepareAction(type, subscribers) {
 		const action = function(event) {
 			const self = this;
