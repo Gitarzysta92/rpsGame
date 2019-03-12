@@ -1,6 +1,7 @@
 class Controller {
 	constructor () {
 		this._actions = {};
+		this.invokedActions = [];
 	}
 
 	get function() {

@@ -19,17 +19,14 @@ class GameCore {
 
 	start = ({wrapper, data}) => {
 		console.log('start-round');
-		setTimeout(function() {
-			wrapper.togglestate();
-		},100)
+		wrapper.togglestate();
+
 		
 	}
 
 	nextRound = ({wrapper, data}) => {
 		console.log('next round');
-		setTimeout(function() {
-			wrapper.togglestate();
-		},100)
+		wrapper.togglestate();
 	}
 }
 
@@ -71,11 +68,13 @@ const startButton = view.element({
 	customProperties: {
 		state: 'start-game',
 		togglestate: function() {this.state === 'start-game' ? 
-		this.state = 'start-round' : this.state = 'start-game'}
+			this.state = 'start-round' : this.state = 'start-game';
+			this.bindEvents();
+		}
 	}
 });
 
-console.log(startButton);
+//console.log(startButton);
 
 
 
