@@ -1,37 +1,68 @@
 // Wrapper for dom elements
 // handle state and events listeners
 class ElementWrapper {
-	constructor({domElement, events}) {
-		this.state = {};
-		this._dom = domElement;
-		if (events) {
-			this.bindEvents(events);
+	constructor({selector, events, customProperties}, callback, root) {
+		this._dom = root.querySelector(selector) || null;
+		this._callback = callback;
+		this._events = events;
+		this.setProperties(customProperties);
+		this.bindEvents();
+	
+	}
+	// TO DO:
+	// Add support for conditional events
+	prepareAction(subscribers) {
+		const action = function(event) {
+			const self = this;
+			const eventData = event;
+			subscribers.forEach(current => current(eventData, self));
 		}
-		this._beforeEvent = [];
-		this._afterEvent = [];
+		return action;
 	}
 
-	bindEvents(events) {
-		events.forEach(current => this.addEvent(current));
+	setProperties(props) {
+		const propsKeys = Object.keys(props);
+		propsKeys.forEach(current => {
+			if (typeof props[current] === 'function') {
+				this[current] = props[current].bind(this);	
+			} else {
+				this[current] = props[current]
+			}	
+		});
+	}
+	// TO DO
+	// implement events listeners redeclaration
+	bindEvents() {
+		this._events.forEach(current => this.addEvent(current));
 	}
 
 	addEvent(event) {
-		const cb = this.bindHooks(event);
-		this._dom.addEventListener(event.type, cb);
-	}
+		if (this.checkCondition(event.condition)) {
+			this._dom.addEventListener(event.type, (e) => {
+				
+						this._callback({
+						wrapper: this, 
+						event: {
+							name: event.name,
+							type: event.type,
+							data: e
+						}
+					});
+			});
+		} else {
 
-	bindHooks({name, type, callback}) {
-		return function(event) {
-			const wrapped = callback.bind(this);
-			const firstHook = this.activateHooks(this._beforeEvent, {name, type});
-			if (!firstHook) return;
-			wrapped(event);
-			
 		}
 	}
-
-	activateHooks() {
-		this._beforeEvent.forEach(current =>  )
+	// TO DO
+	// it must be refactored
+	checkCondition(conditionFunction) {
+		const cFunc = conditionFunction;
+		if (!cFunc) {
+			// throw err
+			return;
+		}
+		const condition = cFunc.bind(this);
+		return condition();
 	}
 
 	get domInstance() {
@@ -47,62 +78,57 @@ class View {
 	constructor(domAppContainer) {
 		this._rootElement = domAppContainer;
 		this._viewElements = [];
+		this._subscribers = [];
+		this._capturedEvents = [];
 	}
 
-	bindElement(id, {events}) {
-		const element = this._rootElement.querySelector(id);
-		if (!element && events.length == 0) {
-			// throw error;
-			return;
+	captureEvent({wrapper, event}) {
+		const prepared = this.prepareEntry({wrapper, event});
+		this._capturedEvents.push(prepared);
+		this._notifySubscribers(prepared);
+	}
+
+	prepareEntry({wrapper, event}) {
+		const entry = {
+			data: event.data,
+			name: event.name,
+			type: event.type,
+			wrapper: wrapper,
+			captureTime: new Date() 
 		}
-
-		const wrappedElement = new elementWrapper({
-			domElement: element,
-			events: events.map(current => Object.defineProperties(current, {
-					callback: {
-						value: this.prepareAction(current.subscribers)
-					} 
-				})	
-			)	
-		})
-		this._viewElements.push(wrappedElement);
-		return wrappedElement;
+		return entry;
 	}
 
-	prepareAction(subscribers) {
-		const action = function(event) {
-			const self = this;
-			const eventData = event;
-			subscribers.forEach(current => current(eventData, self));
-		}
-		return action;
+	_notifySubscribers(preparedEvent) {
+		this._subscribers.forEach(current => current(preparedEvent));
 	}
 
-	subscribe(action) {
-		
+	register(element) {
+		this._viewElements.push(element);
+		return element;
 	}
 
-	actionsInterface() {
-
+	subscribe(subscriber) {
+		this._subscribers.push(subscriber);	
 	}
-
 }
 
 
 class ViewFactory {
 	constructor(rootElement) {
 		this.rootElement = rootElement;
-		this.init();
+		this.model = this.init();
 	}
 	init() { 
-		this.model = new View(this.rootElement);
+		return new View(this.rootElement);
 	}
 
 	element(setup) {
-		return new ElementWrapper(setup, this.model.subscribe);
+		const newElement = new ElementWrapper(setup, this.model.captureEvent.bind(this.model), this.rootElement);	
+		return this.model.register(newElement); 
 	}
 
-	get model() {
+	get function() {
 		return this.model;
 	}
 }

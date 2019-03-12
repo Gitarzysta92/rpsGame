@@ -1,34 +1,24 @@
 class Controller {
 	constructor () {
-
+		this._actions = {};
 	}
 
-	get {
-		return  this.actionHandler;
+	get function() {
+		return this.actionHandler;	
+	}
+	
+
+	actionHandler = (action) => {
+		this._actions[action.name](action);
 	}
 
-	actionHandler(action) {
-
+	defineAction({name, callback}) {
+		Object.defineProperty(this._actions, name, {
+			value: callback
+		});
 	}
 
-	prepareAction(type, subscribers) {
-		const action = function(event) {
-			const self = this;
-			const eventType = type;
-			const eventSubscribers = subscribers.map(current => {		
-				const prepared = function(next) {
-					const context = self;
-					const eventData = event;
-					current(eventData, context, next);
-					return next;
-				}
-				return prepared;
-			});
-			this.recursiveFunctionCaller(eventSubscribers);
-		}
-		return action;
-	}
-
+	
 	recursiveFunctionCaller(functionsArray) {
 		if (functionsArray.length === 0) return;
 		const stack = functionsArray;

@@ -7,11 +7,7 @@ const gameContainer = document.getElementById('rps');
 const view = new View(gameContainer);
 const controller = new Controller();
 
-view.subscribe(controller);
-
-
-
-controller.defineAction('start-game', GameCore.start);
+view.model.subscribe(controller.actionHandler);
 
 
 class GameCore {
@@ -21,23 +17,34 @@ class GameCore {
 
 	action() {}
 
-	start(event, wrapper, next) {
-		//console.log('start game', wrapper, event);
-		animation(wrapper.domInstance, 'move-down-out', function(element) {
-			element.style.display = 'none';
-			next();
-		});
+	start = ({wrapper, data}) => {
+		console.log('start-round');
+		setTimeout(function() {
+			wrapper.togglestate();
+		},100)
+		
 	}
 
-	nextRound() {
+	nextRound = ({wrapper, data}) => {
 		console.log('next round');
+		setTimeout(function() {
+			wrapper.togglestate();
+		},100)
 	}
 }
 
 const game = new GameCore();
 
+controller.defineAction({
+	name: 'start-game', 
+	callback: game.start
+});
 
 
+controller.defineAction({
+	name: 'start-round', 
+	callback: game.nextRound
+});
 
 
 
@@ -48,21 +55,27 @@ const startButton = view.element({
 		{	
 			name: 'start-game',
 			type: "click",
-			condition: () => this.state === 'start-game'
+			condition: function() { 
+				return this.state === 'start-game'; 
+			}
 		},
 		{	
 			name: 'start-round',
 			type: "click",
-			condition: () => this.state === 'start-round'
+			condition: function() { 
+				return this.state === 'start-round'; 
+			}
 
 		}
 	],
 	customProperties: {
 		state: 'start-game',
-		togglestate: () => this.state === 'start-game' ? this.state = 
+		togglestate: function() {this.state === 'start-game' ? 
+		this.state = 'start-round' : this.state = 'start-game'}
 	}
 });
 
+console.log(startButton);
 
 
 
