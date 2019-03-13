@@ -1,7 +1,7 @@
 // Wrapper for dom elements
 // handle state and events listeners
 class ElementWrapper {
-	constructor({selector, events, customProperties}, callback, root) {
+	constructor({selector, events, customProperties = {}}, callback, root) {
 		this._dom = root.querySelector(selector) || null;
 		this._callback = callback;
 		this._events = {};
@@ -117,7 +117,7 @@ class View {
 			data: event.data,
 			name: event.name,
 			type: event.type,
-			wrapper: wrapper,
+			element: wrapper,
 			captureTime: new Date() 
 		}
 		return entry;

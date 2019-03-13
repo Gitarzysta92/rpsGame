@@ -9,15 +9,38 @@ class Controller {
 	}
 	
 
-	actionHandler = (action) => {
-		this._actions[action.name](action);
+	eventHandler = (action) => {
+		if (!this._actions.hasOwnProperty(action.name)) {
+			new Error('Given event have no handling Action')
+			return;	
+		} else {
+			this._actions[action.name].forEach(current => current(action));
+		} 
 	}
 
-	defineAction({name, callback}) {
-		Object.defineProperty(this._actions, name, {
-			value: callback
-		});
+	defineActions(name, callbacks) {
+		if (!Array.isArray(callbacks)) {
+			//throw error
+			return;
+		} else {
+			callbacks.forEach(current => {
+				this.defineAction(name, current);
+			});
+		}
 	}
+
+
+	defineAction(name, callback) {
+		if (this._actions.hasOwnProperty(name)) {
+			this._actions[name].push(callback)	
+		} else {
+			Object.defineProperty(this._actions, name, {
+				value: [callback]
+			});
+		}
+	}
+
+
 
 	
 	recursiveFunctionCaller(functionsArray) {

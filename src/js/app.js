@@ -7,45 +7,49 @@ const gameContainer = document.getElementById('rps');
 const view = new View(gameContainer);
 const controller = new Controller();
 
-view.model.subscribe(controller.actionHandler);
+view.model.subscribe(controller.eventHandler);
+
+
+
 
 
 class GameCore {
 	constructor() {
-		
+	
+		this.defineControllerActions();
 	}
 
 	action() {}
 
-	start = ({wrapper, data}) => {
-		console.log('start-round');
-		wrapper.togglestate();
+	start = ({element, data}) => {
+		console.log('start game');
 
-		
+		controller.invokeAction('open-modal')
+		//element.moveDownOut(function() {});
 	}
 
-	nextRound = ({wrapper, data}) => {
+	nextRound = ({element, data}) => {
 		console.log('next round');
-		wrapper.togglestate();
+	}
+
+	defineControllerActions() {
+		controller.defineAction('start-game', this.start);
+		controller.defineAction('start-round', this.nextRound);
 	}
 }
 
 const game = new GameCore();
 
-controller.defineAction({
-	name: 'start-game', 
-	callback: game.start
-});
-
-
-controller.defineAction({
-	name: 'start-round', 
-	callback: game.nextRound
-});
 
 
 
 
+//
+//  User Interface
+//
+
+
+// initialize start button
 const startButton = view.element({
 	selector: '#start-button',
 	events: [
@@ -67,29 +71,98 @@ const startButton = view.element({
 	],
 	customProperties: {
 		state: 'start-game',
-		togglestate: function() {this.state === 'start-game' ? 
+		toggleState: function() {this.state === 'start-game' ? 
 			this.state = 'start-round' : this.state = 'start-game';
+			this.domInstance.innerHTML = 'Next round';
 			this.bindEvents();
+		},
+		AnimationMoveDownOut: function(callback) {
+			animation(this.domInstance, 'move-down-out', function(element) {
+				element.style.display = 'none';
+				callback();
+			});
 		}
 	}
 });
 
-//console.log(startButton);
+controller.defineActions('start-game', [startButton.toggleState]);
+controller.defineActions('start-round', [startButton.toggleState]);
 
 
 
 
 
 
+// initialize modal window
+const modalWindow = view.element({
+	selector: '#modal',
+	events: [
+		{
+			name: 'close-modal',
+			type: 'click',
+			selector: '.close-modal'
+		}
+	],
+	customProperties: {
+		AnimationZoomIn: function() {
+			animation(this.domInstance, function(element) {
+				element.style.display = 'block';
+				form.addEventListener('submit', onFormSubmit);
+			},'zoom-in');
+		},
+		AnimationZoomOut: function() {
+			animation(modal,'zoom-out', function(element) {
+				element.style.display = 'none';
+				form.removeEventListener('submit', onFormSubmit);
+				animation(startButton, function(element) {
+					element.style.display = 'block';
+				},'move-up-in');	
+			});
+		}
+	}
+})
+
+controller.defineAction('open-modal', modalWindow.AnimationZoomIn);
 
 
 
 
+// initialize default form
+const gameSetupForm = view.element({
+	selector: '#form',
+	events: [
+		{
+			name: 'form-submit',
+			type: 'submit'
+		}
+	],
+	customProperties: {
+		onFormSubmit: function() {
+			animation(this.domInstance, function(element) {
+				element.style.display = 'block';
+				form.addEventListener('submit', onFormSubmit);
+			},'zoom-in');
+		}
+	}
+})
 
 
 
+function onFormSubmit(e) {
+	e.preventDefault();
+	setGame(data);
 
-
+	playerName('player-1', gameSettings[0]);
+	
+	startButton.dataset.game = 'play-game';
+	roundDisplay.innerHTML = 'Round 1';
+	animation(modal, 'zoom-out', function(element) {
+			element.style.display = 'none';
+			controlsStatus('on');
+			triggerRound();
+			clearList();
+	});
+}
 
 
 
@@ -181,62 +254,11 @@ var startButton = document.getElementById('round'),
 	form = document.getElementById("form"),
  	data = document.getElementsByClassName("data");
 
-startButton.addEventListener("click", function(event){
-	var self = this;
-
-	if ( event.target.dataset.game === 'new-game' ) {
-		animation(this, 'move-down-out', function(element) {
-			element.style.display = 'none';
-			modalWindow('on');
-		});
-	} else if ( event.target.dataset.game === 'play-game' ) {
-		animation(this, 'move-down-out', function(element) {
-			element.style.display = 'none';
-			triggerRound();
-		});
-		controlsStatus('on');
-	}	
-});
-
-
-const appUi = {
-	startButton: 
-}
-
-
-
-
-
-
-
-
-
-
-
 
 
 //
 //  User Interface
-//  - moves history
 //
-
-function onFormSubmit(e) {
-	e.preventDefault();
-	setGame(data);
-
-	playerName('player-1', gameSettings[0]);
-	
-	startButton.dataset.game = 'play-game';
-	startButton.innerHTML = 'Next round';
-	roundDisplay.innerHTML = 'Round 1';
-	animation(modal, 'zoom-out', function(element) {
-			element.style.display = 'none';
-			controlsStatus('on');
-			triggerRound();
-			clearList();
-	});
-}
-
 
 
 function triggerRound() {
