@@ -15,7 +15,7 @@ view.model.subscribe(controller.eventHandler);
 
 class GameCore {
 	constructor() {
-	
+
 		this.defineControllerActions();
 	}
 
@@ -23,8 +23,8 @@ class GameCore {
 
 	start = ({element, data}) => {
 		console.log('start game');
-
 		controller.invokeAction('open-modal')
+		controller.invokeAction('open-modal');
 		//element.moveDownOut(function() {});
 	}
 
@@ -34,6 +34,10 @@ class GameCore {
 
 	defineControllerActions() {
 		controller.defineAction('start-game', this.start);
+		controller.defineAction('start-game', {
+			exect: this.start,
+			async: true
+		});
 		controller.defineAction('start-round', this.nextRound);
 	}
 }
@@ -42,12 +46,13 @@ const game = new GameCore();
 
 
 
-
-
 //
 //  User Interface
 //
 
+//
+//  User Interface
+//
 
 // initialize start button
 const startButton = view.element({
@@ -116,13 +121,14 @@ const modalWindow = view.element({
 				form.removeEventListener('submit', onFormSubmit);
 				animation(startButton, function(element) {
 					element.style.display = 'block';
-				},'move-up-in');	
+				},'move-up-in');
 			});
 		}
 	}
 })
 
 controller.defineAction('open-modal', modalWindow.AnimationZoomIn);
+
 
 
 
@@ -145,8 +151,48 @@ const gameSetupForm = view.element({
 		}
 	}
 })
+/*
+form.removeEventListener('submit', onFormSubmit);
+				animation(startButton, function(element) {
+					element.style.display = 'block';
+				},'move-up-in');	
+>>>>>>> Stashed changes
 
+*/
 
+// initialize default form
+const gameSetupForm = view.element({
+	selector: '#form',
+	events: [
+		{
+			name: 'form-submit',
+			type: 'submit'
+		}
+	],
+	customProperties: {
+		onFormSubmit: function() {
+			animation(this.domInstance, function(element) {
+				element.style.display = 'block';
+			},'zoom-in');
+		}
+	}
+})
+
+function onFormSubmit(e) {
+	e.preventDefault();
+	setGame(data);
+
+	playerName('player-1', gameSettings[0]);
+	
+	startButton.dataset.game = 'play-game';
+	roundDisplay.innerHTML = 'Round 1';
+	animation(modal, 'zoom-out', function(element) {
+			element.style.display = 'none';
+			controlsStatus('on');
+			triggerRound();
+			clearList();
+	});
+}
 
 function onFormSubmit(e) {
 	e.preventDefault();

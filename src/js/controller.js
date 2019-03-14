@@ -1,3 +1,11 @@
+class ActionWrapper {
+	constructor({name, callbacks, isAsync}) {
+
+	}
+}
+
+
+
 class Controller {
 	constructor () {
 		this._actions = {};
@@ -14,8 +22,15 @@ class Controller {
 			new Error('Given event have no handling Action')
 			return;	
 		} else {
-			this._actions[action.name].forEach(current => current(action));
+			this.invokeAction(action.name, action)
 		} 
+	}
+
+	invokeAction(name, callback) {
+		const actionId = 
+		this._actions[name].forEach(current => current(action));
+
+		if (this.invokeActions)
 	}
 
 	defineActions(name, callbacks) {
@@ -30,7 +45,8 @@ class Controller {
 	}
 
 
-	defineAction(name, callback) {
+
+	defineAction(name, definedCb) {
 		if (this._actions.hasOwnProperty(name)) {
 			this._actions[name].push(callback)	
 		} else {
@@ -40,7 +56,18 @@ class Controller {
 		}
 	}
 
-
+	prepareCallback(callback, actionArgs) {
+		return function(next) {
+			const cb = callback;
+			const args =  actionArgs;
+			if(callback.async) {
+				cb.exect(args, next);
+			} else {
+				cb.exect(args);
+				next();
+			}
+		}
+	}
 
 	
 	recursiveFunctionCaller(functionsArray) {
