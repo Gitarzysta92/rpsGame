@@ -19,13 +19,10 @@ class GameCore {
 		this.defineControllerActions();
 	}
 
-	action() {}
-
-	start = ({element, data}) => {
+	start = ({element, data}, next) => {
 		console.log('start game');
 		controller.invokeAction('open-modal')
-		controller.invokeAction('open-modal');
-		//element.moveDownOut(function() {});
+		next();
 	}
 
 	nextRound = ({element, data}) => {
@@ -33,12 +30,14 @@ class GameCore {
 	}
 
 	defineControllerActions() {
-		controller.defineAction('start-game', this.start);
 		controller.defineAction('start-game', {
-			exect: this.start,
+			cb: this.start,
 			async: true
 		});
-		controller.defineAction('start-round', this.nextRound);
+		controller.defineAction('start-round', {
+			cb: this.nextRound,
+			async: false
+		});
 	}
 }
 
@@ -81,7 +80,7 @@ const startButton = view.element({
 			this.domInstance.innerHTML = 'Next round';
 			this.bindEvents();
 		},
-		AnimationMoveDownOut: function(callback) {
+		AnimationMoveDownOut: function({ element }, callback) {
 			animation(this.domInstance, 'move-down-out', function(element) {
 				element.style.display = 'none';
 				callback();
@@ -90,8 +89,22 @@ const startButton = view.element({
 	}
 });
 
-controller.defineActions('start-game', [startButton.toggleState]);
-controller.defineActions('start-round', [startButton.toggleState]);
+controller.defineActions('start-game', [
+	{
+		cb: startButton.toggleState,
+		async: false
+	},
+	{
+		cb: startButton.AnimationMoveDownOut,
+		async: true
+	}
+]);
+controller.defineActions('start-round', [
+	{
+		cb: startButton.toggleState,
+		async: true
+	}
+]);
 
 
 
@@ -112,16 +125,13 @@ const modalWindow = view.element({
 		AnimationZoomIn: function() {
 			animation(this.domInstance, function(element) {
 				element.style.display = 'block';
-				form.addEventListener('submit', onFormSubmit);
+				//form.addEventListener('submit', onFormSubmit);
 			},'zoom-in');
 		},
 		AnimationZoomOut: function() {
-			animation(modal,'zoom-out', function(element) {
+			animation(this.domInstance,'zoom-out', function(element) {
 				element.style.display = 'none';
-				form.removeEventListener('submit', onFormSubmit);
-				animation(startButton, function(element) {
-					element.style.display = 'block';
-				},'move-up-in');
+				//form.removeEventListener('submit', onFormSubmit);
 			});
 		}
 	}
@@ -131,8 +141,6 @@ controller.defineAction('open-modal', modalWindow.AnimationZoomIn);
 
 
 
-
-
 // initialize default form
 const gameSetupForm = view.element({
 	selector: '#form',
@@ -146,76 +154,30 @@ const gameSetupForm = view.element({
 		onFormSubmit: function() {
 			animation(this.domInstance, function(element) {
 				element.style.display = 'block';
-				form.addEventListener('submit', onFormSubmit);
 			},'zoom-in');
 		}
 	}
 })
+
+
 /*
-form.removeEventListener('submit', onFormSubmit);
-				animation(startButton, function(element) {
-					element.style.display = 'block';
-				},'move-up-in');	
->>>>>>> Stashed changes
+function onFormSubmit(e) {
+	e.preventDefault();
+	setGame(data);
+
+	playerName('player-1', gameSettings[0]);
+	
+	startButton.dataset.game = 'play-game';
+	roundDisplay.innerHTML = 'Round 1';
+	animation(modal, 'zoom-out', function(element) {
+			element.style.display = 'none';
+			controlsStatus('on');
+			triggerRound();
+			clearList();
+	});
+}
 
 */
-
-// initialize default form
-const gameSetupForm = view.element({
-	selector: '#form',
-	events: [
-		{
-			name: 'form-submit',
-			type: 'submit'
-		}
-	],
-	customProperties: {
-		onFormSubmit: function() {
-			animation(this.domInstance, function(element) {
-				element.style.display = 'block';
-			},'zoom-in');
-		}
-	}
-})
-
-function onFormSubmit(e) {
-	e.preventDefault();
-	setGame(data);
-
-	playerName('player-1', gameSettings[0]);
-	
-	startButton.dataset.game = 'play-game';
-	roundDisplay.innerHTML = 'Round 1';
-	animation(modal, 'zoom-out', function(element) {
-			element.style.display = 'none';
-			controlsStatus('on');
-			triggerRound();
-			clearList();
-	});
-}
-
-function onFormSubmit(e) {
-	e.preventDefault();
-	setGame(data);
-
-	playerName('player-1', gameSettings[0]);
-	
-	startButton.dataset.game = 'play-game';
-	roundDisplay.innerHTML = 'Round 1';
-	animation(modal, 'zoom-out', function(element) {
-			element.style.display = 'none';
-			controlsStatus('on');
-			triggerRound();
-			clearList();
-	});
-}
-
-
-
-
-
-
-
 //
 // Animations
 // - 
