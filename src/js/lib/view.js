@@ -37,7 +37,8 @@ class ElementWrapper {
 			value: {
 				type: event.type,
 				data: this.prepareListenerCallback(event),
-				condition: event.condition
+				condition: event.condition,
+				initiator: this._dom.querySelector(event.selector)
 			},
 			enumerable: true,
 			writable: false
@@ -48,11 +49,13 @@ class ElementWrapper {
 	// if it condition passed
 	bindEvents() {
 		for (let current in this._events){
-			const event = this._events[current]	
+			const event = this._events[current]
+			const element = event.initiator || this._dom;
+
 			if (this.checkCondition(event.condition)) {
-				this._dom.addEventListener(event.type, event.data);
+				element.addEventListener(event.type, event.data);
 			} else {
-				this._dom.removeEventListener(event.type, event.data);
+				element.removeEventListener(event.type, event.data);
 			}
 		}
 	}
@@ -60,6 +63,7 @@ class ElementWrapper {
 	// Prepare listener callback for defined events
 	prepareListenerCallback(event) {
 		const listenerCallback = (e) => {
+			e.preventDefault();
 			this._callback({
 				wrapper: this, 
 				event: {

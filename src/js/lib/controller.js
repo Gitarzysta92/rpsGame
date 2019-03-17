@@ -4,14 +4,14 @@ class Controller {
 		this._actions = {};
 		this.invokedActions = [];
 		this._actionsArchive = [];
+		this.apiWrapper();
 	}
 
 	// Call action by given name
 	// accepts -> name:string, callback:function
 	defineActions(name, callbacks) {
 		if (!Array.isArray(callbacks)) {
-			new Error('');
-			return;
+			throw new Error('Given callbacks argument is not Array type');
 		} else {
 			callbacks.forEach(current => {
 				this.defineAction(name, current);
@@ -23,8 +23,7 @@ class Controller {
 	// accepts -> name:string, action:object
 	defineAction(name, action) {
 		if (!action.hasOwnProperty('cb')) {
-			new Error('Incorrect defined action: ' + name)
-			return;
+			throw new Error('Incorrect defined action: ' + name);
 		}
 		if (this._actions.hasOwnProperty(name)) {
 			this._actions[name].push(action)	
@@ -46,8 +45,7 @@ class Controller {
 	// accepts -> name:string, callback:function/object
 	invokeAction(name, callback) {
 		if (!this._actions.hasOwnProperty(name)) {
-			new Error('Given event have no handling Action')
-			return;	
+			throw new Error('Given event have no handling Action: ' + name);
 		} else {
 			if (this.invokedActions.length === 0) {
 				this.stageAction(name, callback);
@@ -94,7 +92,6 @@ class Controller {
 		const nextInStack = () => {
 			this.recursiveFunctionCaller(stack);
 		}
-		//console.log(currentFunction);
 		currentFunction(nextInStack);
 
 	}
@@ -102,6 +99,34 @@ class Controller {
 	actionLogger(actionName, type, func) {
 		console.log('invoked action: ' + actionName + ' -async: ' + type + ' ' + func.name);
 	}
+
+
+
+	//
+	//
+	apiWrapper() {
+		let props = Object.getOwnPropertyNames(Object.getPrototypeOf(this));
+		props = props.filter(current => typeof this[current] === 'function' && current !== 'constructor');
+		props.forEach(property => {
+			const ownProperty = this[property];
+			const privateProperty = '_' + property;
+			const funcWrapper = (...args) => {
+				try {
+					return this[privateProperty].apply(this, args);	
+				} 
+				catch(error) {
+					console.log(error);
+				}
+			}
+			Object.defineProperty(this, privateProperty, {
+				value: ownProperty,
+				enumerable: false,
+				configurable: false,
+				writable: false
+			});
+			Object.defineProperty(this, property, { value: funcWrapper });
+		})
+	} 
 
 }
 

@@ -4,24 +4,92 @@
 		"selected_items":
 		[
 			[
+				"form",
+				"formInputs"
+			],
+			[
+				"query",
+				"querySelectorAll"
+			],
+			[
+				"call",
+				"callbacks"
+			],
+			[
+				"func",
+				"functionWrapper"
+			],
+			[
+				"fun",
+				"functionWrapper"
+			],
+			[
+				"action",
+				"actionLogger"
+			],
+			[
+				"stag",
+				"stageAction"
+			],
+			[
+				"next",
+				"nextRound"
+			],
+			[
+				"defin",
+				"defineControllerActions"
+			],
+			[
+				"listener",
+				"listenerCallback"
+			],
+			[
+				"prepare",
+				"prepareListenerCallback"
+			],
+			[
+				"event",
+				"eventWrapper"
+			],
+			[
+				"eve",
+				"eventListener"
+			],
+			[
+				"start",
+				"start-round"
+			],
+			[
+				"ac",
+				"actionObj"
+			],
+			[
+				"con",
+				"conditionFunction"
+			],
+			[
 				"co",
-				"constructor"
+				"conditionFunction"
+			],
+			[
+				"a",
+				"actionHandler"
+			],
+			[
+				"n",
+				"notifySubscribers"
+			],
+			[
+				"new",
+				"newElement"
 			],
 			[
 				"nex",
 				"nextRound"
 			],
 			[
-				"next",
-				"nextInStack"
-			],
-			[
 				"curre",
 				"currentFunction"
-			],
-			[
-				"eve",
-				"eventSubscribers"
 			],
 			[
 				"re",
@@ -38,10 +106,6 @@
 			[
 				"on",
 				"onclickAction"
-			],
-			[
-				"start",
-				"startButton"
 			],
 			[
 				"align",
@@ -104,10 +168,6 @@
 				"routeObject"
 			],
 			[
-				"con",
-				"controllers"
-			],
-			[
 				"route",
 				"routeObject"
 			],
@@ -120,20 +180,12 @@
 				"mainController"
 			],
 			[
-				"ac",
-				"accessModel"
-			],
-			[
 				"access",
 				"accessLevel"
 			],
 			[
 				"user",
 				"userSession"
-			],
-			[
-				"query",
-				"queryObj"
 			],
 			[
 				"userSess",
@@ -202,10 +254,6 @@
 			[
 				"A",
 				"Application"
-			],
-			[
-				"event",
-				"eventEmitter"
 			],
 			[
 				"mongo",
@@ -372,10 +420,6 @@
 				"observer"
 			],
 			[
-				"fun",
-				"function"
-			],
-			[
 				"remove",
 				"removeAt"
 			],
@@ -470,63 +514,11 @@
 			[
 				"handle",
 				"handleKeyUp"
-			],
-			[
-				"font",
-				"font-size"
-			],
-			[
-				"in",
-				"inline"
-			],
-			[
-				"te",
-				"tertiary-color"
-			],
-			[
-				"back",
-				"background"
-			],
-			[
-				"border",
-				"border-radius"
-			],
-			[
-				"index",
-				"indexOf"
-			],
-			[
-				"sty",
-				"setDisplay"
-			],
-			[
-				"getElement",
-				"getElementsByTagName"
-			],
-			[
-				"create",
-				"createClass"
-			],
-			[
-				"requ",
-				"require"
-			],
-			[
-				"quote",
-				"quoteAuthor"
 			]
 		]
 	},
 	"buffers":
 	[
-		{
-			"file": "webpack.config.js",
-			"settings":
-			{
-				"buffer_size": 686,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -566,13 +558,45 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/start-button",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/sass"
+	],
 	"file_history":
 	[
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/modal-window/modalWindow.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/app.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/game.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/view.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/controller.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/wheelEvents.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/simpleAnimationsAPI.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/start-button/startButton.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/controller/mainController.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/router/globalRouter.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/router/routeModel.js",
+		"/C/Users/mluka/OneDrive/Desktop/test/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/.eslintrc",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/rating-result-list.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/custom.css",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/rating-item-results.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/vc_posts_slider.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/vc_posts_grid.php",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/webpack.config.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/package.json",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/sass/style.scss",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/.babelrc",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/js/script.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/index.html",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/package.json",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts-box.php",
-		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/custom.css",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts-carousel.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/marlee-core.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts.php",
@@ -582,7 +606,6 @@
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/category.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/author_backup.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/author.php",
-		"/C/Users/mluka/OneDrive/Desktop/test/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/single.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/custom.js",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/frontend.popup.min.js",
@@ -628,7 +651,6 @@
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/reducer.js",
 		"/C/Users/mluka/OneDrive/Desktop/modul-20/src/reducers/index.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/controller/mainController.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/auth-cookie.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/flux/store-provider.js",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/index.php",
@@ -657,7 +679,6 @@
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login-page.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/components/layout.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/server/server.mod.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/router/globalRouter.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/login-page.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/partials/form-input-subtext.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/logout.js",
@@ -675,27 +696,7 @@
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/form.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/apps.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/containers/main/main.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/package.json",
-		"/C/Users/mluka/OneDrive/Desktop/reactApp/package.json",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/index.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/index.html",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/views/layouts/main.hbs",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/controllers/board.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/server/routes.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/views/login.hbs",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/js/app.js",
-		"/C/Users/mluka/OneDrive/Desktop/reactApp/webpack.config.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/controllers/home.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/footer.php",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/head.php",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/public/index.php",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/index.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/services/userService/lib/userService.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/services/userService/userService.routes.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/services/userService/userService.controller.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/app.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlowClient/server/config.js"
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/containers/main/main.js"
 	],
 	"find":
 	{
@@ -713,6 +714,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"circle",
+			"wheel",
+			"controlsStatus",
+			"setGame",
+			"current",
+			"onFormSubmit",
+			"modalWindow",
+			"prepareAction",
+			"prepare",
+			"rating-results-list",
+			"vc_gitem-zone",
+			"'",
 			"by",
 			"marlee_posted_by",
 			"by",
@@ -790,41 +803,17 @@
 		"whole_word": false,
 		"wrap": true
 	},
+	"folders":
+	[
+		{
+			"path": "C:\\Users\\mluka\\OneDrive\\Desktop\\rpsGame"
+		}
+	],
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "webpack.config.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 686,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								464,
-								464
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Babel/JavaScript (Babel).sublime-syntax",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
