@@ -7,28 +7,47 @@ const { animation, onWheelEvent } = utils;
 // initialize modal window
 const figureCircle = view.element({
 	selector: '.circle',
+	figurePointer: 0,
 	customProperties: {
-		isListen: false,
 		icon: this.domInstance.getElementsByTagName('i')[0],
-		toggleListener: function() {
+		isListen: function(boolean) {
 			if (isListnen) {
-				onWheelEvent(circle, eventDirection);
+				onWheelEvent(circle, this.eventDirection);
 				window.onkeyup = onKeyboardEvent;	
 			} else {
 				onWheelEvent(circle, eventDirection, 'remove');
 				window.onkeyup = null;
 			}
 		},
+		eventDirection: function(elem, direction) {
+				if (direction === 'up') {
+					this.rollUp();
+				} else {
+					this.rollDown();
+				}
+		},
 		rollUp: function() {
 			animation(this.icon, 'move-up-out', function(element) {
-				controlsFigure(element, 'up');
+				this.controlsFigure(element, 'up');
 			}, 'move-up-in' );
 		},
 		rollDown: function() {
 			animation(icon, 'move-down-out', function(element) {
-				controlsFigure(element,  'down');
+				this.controlsFigure(element,  'down');
 			}, 'move-down-in' );
 		},
+		controlsFigure: function(icon, direction) {
+			if ( direction === 'up' && pointer < 2 ){
+				pointer += 1;
+			} else if ( direction === 'up' && pointer === 2 ) {
+				pointer = 0;
+			} else if ( direction === 'down' && pointer > 0) {
+				pointer -= 1;
+			} else if ( direction === 'down' && pointer === 0) {
+				pointer = 2;
+			}
+			setFigure(icon, pointer);
+		}
 
 	}
 })
@@ -54,18 +73,7 @@ function onKeyboardEvent(e) {
 // - Set name, icon and value by choosen figure
 //
 var pointer = 0;
-function controlsFigure(icon, direction) {
-	if ( direction === 'up' && pointer < 2 ){
-		pointer += 1;
-	} else if ( direction === 'up' && pointer === 2 ) {
-		pointer = 0;
-	} else if ( direction === 'down' && pointer > 0) {
-		pointer -= 1;
-	} else if ( direction === 'down' && pointer === 0) {
-		pointer = 2;
-	}
-	setFigure(icon, pointer);
-}
+function 
 //
 // Utilities - Figure setter
 // - Set name, icon and value by choosen figure
