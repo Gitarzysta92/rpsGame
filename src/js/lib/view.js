@@ -26,7 +26,7 @@ class ElementWrapper {
 	// Add defined events.
 	// argument type: array
 	addEvents(events) {
-		events.forEach(current => this.addEvent(current));
+		if (events) events.forEach(current => this.addEvent(current));
 	}
 
 	// Add single event

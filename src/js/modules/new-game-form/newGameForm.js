@@ -28,7 +28,7 @@ const gameSetupForm = view.element({
 	}
 });
 
-controller.defineAction('form-submit', { cb: gameSetupForm.onSubmit, async: false });
+controller.defineAction('form-submit', { exec: gameSetupForm.onSubmit, async: false });
 
 
 export default gameSetupForm;

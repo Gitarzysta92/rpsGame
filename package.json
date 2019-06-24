@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "npm-run-all test:*",
-    "start": "webpack-dev-server"
+    "app": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

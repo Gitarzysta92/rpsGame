@@ -24,8 +24,10 @@ function nextInStack(element, toDo, callback) {
 		limiter = 1;
 	
 	if (typeof stack[0] === 'function'){
-		(stack.shift())(element);
-		nextInStack(element, stack, callback);
+		const next = function() {
+			nextInStack(element, stack, callback);	
+		};
+		(stack.shift())(element, next);
 	} else if (typeof stack[0] === 'string') {
 		element.classList.add(stack.shift());
 		element.addEventListener("animationend", function() {

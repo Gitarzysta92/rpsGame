@@ -4,6 +4,46 @@
 		"selected_items":
 		[
 			[
+				"flex-",
+				"flex-direction\tproperty"
+			],
+			[
+				"flex",
+				"flex-wrap\tproperty"
+			],
+			[
+				"set",
+				"setPlayerFigure"
+			],
+			[
+				"define",
+				"defineControllerActions"
+			],
+			[
+				"find",
+				"findClassByString"
+			],
+			[
+				"ser",
+				"servicesRegistry"
+			],
+			[
+				"collecti",
+				"collectionName"
+			],
+			[
+				"se",
+				"servicesRegistry"
+			],
+			[
+				"whee",
+				"wheelEvent"
+			],
+			[
+				"Con",
+				"Controller"
+			],
+			[
 				"form",
 				"formInputs"
 			],
@@ -116,10 +156,6 @@
 				"inline-block\tdisplay"
 			],
 			[
-				"flex",
-				"flex-direction\tproperty"
-			],
-			[
 				"bac",
 				"background-color\tproperty"
 			],
@@ -130,10 +166,6 @@
 			[
 				"sessi",
 				"sessionToken"
-			],
-			[
-				"se",
-				"setupRouter"
 			],
 			[
 				"sess",
@@ -482,38 +514,6 @@
 			[
 				"Us",
 				"usersService"
-			],
-			[
-				"walkre",
-				"walkerVT"
-			],
-			[
-				"read",
-				"readDir"
-			],
-			[
-				"db_",
-				"db_instance"
-			],
-			[
-				"text",
-				"text-align\tproperty"
-			],
-			[
-				"env",
-				"environment"
-			],
-			[
-				"Stop",
-				"Stopwatch"
-			],
-			[
-				"wa",
-				"watchDisplay"
-			],
-			[
-				"handle",
-				"handleKeyUp"
 			]
 		]
 	},
@@ -560,20 +560,60 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/start-button",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/sass"
 	],
 	"file_history":
 	[
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/modal-window/modalWindow.js",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/404.php",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/content-none.php",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/search.php",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/searchform.php",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/custom.css",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/content.php",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/content-search.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/custom.css",
+		"/C/Users/mluka/OneDrive/Desktop/grupa creative/aboutus/aplikacje.php",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/rating-result-list.php",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/game-info-container/display.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/app.js",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/game.js",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/view.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/game-core/game.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts-box.php",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/figure-circle/figureCircle.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/lib/view.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/lib/controller.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/start-button/startButton.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/functions.php",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/webpack.config.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/sass/style.scss",
+		"/C/Users/mluka/Downloads/temp/js/script.js",
+		"/C/Users/mluka/OneDrive/Desktop/temp/package.json",
+		"/C/Users/mluka/OneDrive/Desktop/temp/js/script.js",
+		"/C/Users/mluka/Downloads/temp/package.json",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/new-game-form/newGameForm.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/css/style.css",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/index — kopia.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/modal-window/modalWindow.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/utils/simpleAnimationsAPI.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/utils/wheelEvents.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/utils/utils.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/game.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/view.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-20/src/store/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-20/src/index.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-20/src/DevTools.js",
+		"/C/Users/mluka/OneDrive/Desktop/modul-20/public/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/lib/app.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/lib/appContainer.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/modules/module.js",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/index.html",
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/globalReducer.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/modal-window/modalWindow.js",
+		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/view/view.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/controller.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/wheelEvents.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/js/simpleAnimationsAPI.js",
@@ -583,20 +623,13 @@
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/app/router/routeModel.js",
 		"/C/Users/mluka/OneDrive/Desktop/test/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/.eslintrc",
-		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/rating-result-list.php",
-		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/custom.css",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/rating-item-results.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/vc_posts_slider.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/vc_posts_grid.php",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/webpack.config.js",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/package.json",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/index.html",
-		"/C/Users/mluka/OneDrive/Desktop/rpsGame/src/sass/style.scss",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/.babelrc",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/js/script.js",
 		"/C/Users/mluka/OneDrive/Desktop/rpsGame/index.html",
-		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts-box.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts-carousel.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/marlee-core.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/posts.php",
@@ -618,7 +651,6 @@
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/progressmeter.js",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/core.js",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/top-bar.php",
-		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/functions.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/footer.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/header.php",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/www/es-widget-page.js",
@@ -636,7 +668,6 @@
 		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/CommentContainer.js",
 		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/comment.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/index.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/globalReducer.js",
 		"/C/Users/mluka/OneDrive/Desktop/magdalena shmidt/index.html",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/CommentsListContainer.js",
@@ -647,8 +678,6 @@
 		"/C/Users/mluka/OneDrive/Desktop/modul-19/src/comments.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/auth.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/utils/apiCaller.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/index.html",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/reducer.js",
 		"/C/Users/mluka/OneDrive/Desktop/modul-20/src/reducers/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/auth-cookie.js",
@@ -661,46 +690,11 @@
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/auth-route.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/index.js",
 		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/containers/pinned-news.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/containers/single-news.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/pinned.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/news-feed.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/news-container.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/board-container.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/app.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/layout.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/main.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/lib/mod-container.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/cooboard/board.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/modules.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/components/main-menu.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/lib/modules.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/login.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/register.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login-page.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/core/components/layout.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/server/server.mod.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/login-page.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/partials/form-input-subtext.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/logout.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/webpack.config.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login-form.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/register-form.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/partials/input-text.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/style.scss",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/submit-button.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/input-password.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/input-email.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/form-input-subtext.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/form-policy.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/.babelrc",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/components/login.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/authorization/form.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/apps.js",
-		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/containers/main/main.js"
+		"/C/Users/mluka/OneDrive/Desktop/workFlow/client/source/modules/dashboard/components/containers/single-news.js"
 	],
 	"find":
 	{
-		"height": 56.0
+		"height": 28.0
 	},
 	"find_in_files":
 	{
@@ -714,6 +708,8 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pointer",
+			"app",
 			"circle",
 			"wheel",
 			"controlsStatus",

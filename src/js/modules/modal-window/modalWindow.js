@@ -16,22 +16,23 @@ const modalWindow = view.element({
 	],
 	customProperties: {
 		AnimationZoomIn: function() {
-			animation(this.domInstance, function(element) {
+			animation(this.domInstance, function(element, animate) {
 				element.style.display = 'block';
 				//form.addEventListener('submit', onFormSubmit);
+				animate();
 			},'zoom-in');
 		},
-		AnimationZoomOut: function() {
+		AnimationZoomOut: function(arg, next) {
 			animation(this.domInstance,'zoom-out', function(element) {
 				element.style.display = 'none';
-				//form.removeEventListener('submit', onFormSubmit);
+				next()
 			});
 		}
 	}
 })
 
-controller.defineAction('open-modal', { cb: modalWindow.AnimationZoomIn, async: true });
-controller.defineAction('close-modal', { cb: modalWindow.AnimationZoomOut, async: true });
+controller.defineAction('open-modal', { exec: modalWindow.AnimationZoomIn, async: false });
+controller.defineAction('close-modal', { exec: modalWindow.AnimationZoomOut, async: true });
 
 
 export default modalWindow;

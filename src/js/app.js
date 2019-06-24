@@ -22,8 +22,11 @@ app.register({collection: 'core', name: 'view', base: view});
 app.register({collection: 'core', name: 'controller', base: controller});
 
 app.register({collection: 'utils', name: 'animation', base: animation});
-app.register({collection: 'utils', name: 'wheelEvent', base: wheelEvent});
-app.register({collection: 'utils', name: 'generalUtils', base: generalUtils});
+app.register({collection: 'utils', name: 'onWheelEvent', base: wheelEvent});
+
+for (let util in generalUtils ) {
+	app.register({collection: 'utils', name: util, base: generalUtils[util]});
+}
 
 
 export const {core, utils} = app.services;

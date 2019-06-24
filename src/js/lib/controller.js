@@ -2,7 +2,10 @@
 class Controller {
 	constructor () {
 		this._actions = {};
-		this.invokedActions = [];
+		this._invokedActions = {
+			async: [],
+			sync: []
+		};
 		this._actionsArchive = [];
 		this.apiWrapper();
 	}
@@ -22,7 +25,7 @@ class Controller {
 	// Call action by given name
 	// accepts -> name:string, action:object
 	defineAction(name, action) {
-		if (!action.hasOwnProperty('cb')) {
+		if (!action.hasOwnProperty('exec')) {
 			throw new Error('Incorrect defined action: ' + name);
 		}
 		if (this._actions.hasOwnProperty(name)) {
@@ -32,6 +35,11 @@ class Controller {
 				value: [action]
 			});
 		}
+	}
+
+	removeAction(name) {
+		console.log(this._actions[name])
+		delete this._actions[name];
 	}
 	
 	// Subscriber callback for given Actions emmited by View
@@ -46,20 +54,25 @@ class Controller {
 	invokeAction(name, callback) {
 		if (!this._actions.hasOwnProperty(name)) {
 			throw new Error('Given event have no handling Action: ' + name);
-		} else {
-			if (this.invokedActions.length === 0) {
-				this.stageAction(name, callback);
-				this.recursiveFunctionCaller(this.invokedActions);
-			} else {
-				this.stageAction(name, callback);
-			}
-		} 
+		}	
+		this.stageAction(name, callback);
 	}
 
 	stageAction(name, callback) {
 		this._actions[name].forEach(current => {
 			const action = this.prepareFunc(name, current, callback);
-			this.invokedActions.push(action);
+	
+			if (current.async) {
+				this._invokedActions.async.push(action);
+				if (this._invokedActions.async.length <= 1) {	
+					this.recursiveFunctionCaller(this._invokedActions.async);
+				}
+			} else {
+				this._invokedActions.sync.push(action);
+				if (this._invokedActions.sync.length <= 1) {	
+					this.recursiveFunctionCaller(this._invokedActions.sync);
+				}
+			}
 		});
 	}
 
@@ -70,16 +83,22 @@ class Controller {
 		const action = functionWrapper;
 		const args =  actionArgs;
 
-		return function(next) {
-			logAction(name, functionWrapper.async, functionWrapper.cb);
+		const exec = function(next) {
+			logAction(name, functionWrapper.async, functionWrapper.exec);
 
 			if(functionWrapper.async) {
-				action.cb(args, next);
+				action.exec(args, next);
 			} else {
-				action.cb(args);
+				action.exec(args);
 				next();
 			}
 		}
+
+		Object.defineProperty(exec, 'name', {
+			value: name
+		})
+
+		return exec;
 	}
 
 	// Walks on given array and call Action functions
@@ -87,9 +106,10 @@ class Controller {
 	recursiveFunctionCaller(functionsArray) {
 		if (functionsArray.length === 0) return;
 		const stack = functionsArray;
-		const currentFunction = stack.shift();
+		const currentFunction = stack[0];
 
 		const nextInStack = () => {
+			this.archivizeAction(stack.shift());
 			this.recursiveFunctionCaller(stack);
 		}
 		currentFunction(nextInStack);
@@ -99,6 +119,15 @@ class Controller {
 	actionLogger(actionName, type, func) {
 		console.log('invoked action: ' + actionName + ' -async: ' + type + ' ' + func.name);
 	}
+
+	archivizeAction(action) {
+		this._actionsArchive.push({
+			name: action.name,
+			action: action
+		});
+		//console.log(this._actionsArchive);
+	}
+
 
 
 

@@ -14,7 +14,7 @@ function onWheelEvent(domObject, callback){
 		element.parentNode.replaceChild(clone, element);
 		return;
 	}
-	console.log('add');
+
 	var events = [],
 		threshold = 300;
 		

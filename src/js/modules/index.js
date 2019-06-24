@@ -1,19 +1,10 @@
-import game from './game-core/game.js';
-import modalWindow from './modal-window/modalWindow.js';
-import startButton from './start-button/startButton.js';
-import gameForm from './new-game-form/newGameForm.js';
-import figureCircle from './figure-circle/figureCircle.js';
+import './game-core/game.js';
+import './modal-window/modalWindow.js';
+import './start-button/startButton.js';
+import './new-game-form/newGameForm.js';
+import './figure-circle/figureCircle.js';
+import './game-info-container/display.js';
+import './latest-figures/figures-archive.js';
+import './player-name/name.js';
 
 
-const Modules = {
-	_dependencies: {},
-	connect(provider) {
-		this._dependencies = provider
-	},
-	get dependencies() {
-		return this._dependencies;
-	}
-}
-
-
-export default Modules;
