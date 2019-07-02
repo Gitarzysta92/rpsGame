@@ -39,6 +39,7 @@ body {
 }
 
 .player {
+	@media (max-width: 768px) { text-align: center; }
 	> span {
 		font-size: 10px;
 		font-weight: 700;
@@ -50,12 +51,16 @@ body {
 	}
 	.circle {
 		@include circle(300px);
+		@media (max-width: 992px) { @include circle(200px); }
+		@media (max-width: 768px) { margin: 0 auto; }
+ 
 		cursor: pointer;
 		overflow: hidden;
 		background-color: $secondary-color;
 		transition: transform .2s ease-in-out; 
 		.move {
 			font-size: 120px;
+			@media (max-width: 992px) { font-size: 80px }
 			color: $light-text;
 		}
 		&.blink {
@@ -117,6 +122,20 @@ body {
 		}
 	}
 }
+@media (max-width: 768px) { 
+	#human {
+		order: 3;
+	}
+	#cpu {
+		order: 1;
+		.circle {
+			display: none!important;
+		}
+	}
+ }
+
+
+
 
 .game-display {
 	display: flex;
@@ -126,6 +145,13 @@ body {
 	width: 300px;
 	height: 300px;
 	line-height: 70px;
+	@media (max-width: 768px) { 
+		order: 2;
+		width: 100%;
+		height: auto;
+		margin: 50px 0; 
+	}
+	
 	.start-button {
 		height: 50px;
 		background-color: $light-text;
@@ -199,6 +225,7 @@ body {
 			border: none;
 			outline: none;
 			padding: 10px 30px;
+			border-radius: 40px;
 			&:focus {
 				background-color: $tertiary-color;
 			}
@@ -224,6 +251,16 @@ body {
 				background-color: $light-text;
 				color: $secondary-color;
 			}
+		}
+	}
+	.alert-box {
+		display: none;
+		text-align: center;
+		p {
+			color: #fff;
+			background-color: #dca0be;
+			padding: 5px 20px;
+			border-radius: 20px;
 		}
 	}	
 }
