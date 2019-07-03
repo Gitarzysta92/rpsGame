@@ -36,11 +36,23 @@ body {
 	color: $secondary-color;
 	font: 100% $font-stack; 
 	overflow: hidden;
+	
 }
+
+.h100 { height: 100vh; }
+@media (max-width: 768px) { 
+	.sm-h100 {
+		height: 100%;
+	}
+ }
+
+
 
 .player {
 	@media (max-width: 768px) { text-align: center; }
 	> span {
+		position: relative;
+    	z-index: 1111;
 		font-size: 10px;
 		font-weight: 700;
 		color: #fff;
@@ -84,12 +96,14 @@ body {
 	.move-name {
 		box-sizing: border-box;
 		padding:40px 0 20px 0;
+		@media (max-width: 768px) { padding: 20px 0 0 0; }
 		text-align: center;
 	}
 	.latest-moves {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
+		@media (max-width: 768px) { padding-bottom: 20px; }
 		span {
 			box-sizing: border-box;
 			padding: 5px;
@@ -123,12 +137,26 @@ body {
 	}
 }
 @media (max-width: 768px) { 
-	#human {
+	.player {
 		order: 3;
 	}
-	#cpu {
+	.player.oponent {
 		order: 1;
+		flex-direction: row;
+		display: flex;
+		height: 55px;
+		justify-content: space-evenly;
+		background: $secondary-color;
+		padding: 10px 0;
+		.move-name {
+			padding: 0;
+			color: #fff;
+		
+		}
 		.circle {
+			display: none!important;
+		}
+		.latest-moves {
 			display: none!important;
 		}
 	}
@@ -138,6 +166,8 @@ body {
 
 
 .game-display {
+	position: relative;
+    z-index: 2222;
 	display: flex;
 	flex-direction: column;
 	align-items:center;
@@ -148,13 +178,14 @@ body {
 	@media (max-width: 768px) { 
 		order: 2;
 		width: 100%;
-		height: auto;
-		margin: 50px 0; 
+		height: 100px;
+		margin: 10px 0; 
 	}
 	
 	.start-button {
 		height: 50px;
 		background-color: $light-text;
+		@media (max-width: 768px) { height: 40px; }
 		&:focus {
 			box-shadow: 0 0 0 0.2rem $secondary-color;
 		}
@@ -200,6 +231,8 @@ body {
 }
 
 .modal {
+	position: relative;
+    z-index: 3333;
 	background-color: $primary-color-rgba;
 	display: none;
 	&.zoom-in {
@@ -213,12 +246,14 @@ body {
 		top: 50px;
 		right: 50px;
 		cursor: pointer;
+		z-index: 1111;
 	}
 	form {
 		text-align: center;
 		input {
 			width: 100%;
 			font-size: 100px;
+			@media (max-width: 768px) { font-size: 30px; }
 			text-align: center;
 			color: $light-text;
 			background-color: transparent;
@@ -272,11 +307,14 @@ footer {
 	font-size: 10px;
 	font-weight: 700;
 	width: 100%;
+	@media (max-width: 768px) { text-align: center; }
 	.tips {
 		float: left;
+		@media (max-width: 768px) { display: none; }
 	}
 	.copy {
 		float: right;
+		@media (max-width: 768px) { float: none; }
 	}
 }
 

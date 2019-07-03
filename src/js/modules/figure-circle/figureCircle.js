@@ -1,7 +1,12 @@
 import { core, utils } from '../../app.js';
 
 const { controller, view } = core;
-const { animation, onWheelEvent, findClassByString } = utils;
+const { 
+	animation, 
+	onWheelEvent,
+	onTouchEvent,
+	findClassByString 
+} = utils;
 
 
 // TO DO:
@@ -15,7 +20,10 @@ const cpuCircle = view.element({
 			const icon = this.domInstance.getElementsByTagName('i')[0]
 			setFigure(icon, number);
 		},
-		blinkCircle
+		blinkCircle() {
+			animation(this.domInstance, 'blink', function() {
+			})
+		},
 	}
 })
 
@@ -37,13 +45,15 @@ const playerCircle = view.element({
 			this.icon = this.domInstance.getElementsByTagName('i')[0];
 			if (listen) {
 				onWheelEvent(this.domInstance, this.eventDirection);
-				window.onkeyup = this.onKeyboardEvent;	
+				window.onkeyup = this.onKeyboardEvent;
+				this.onTouchEvent(true);
 			} else {
 				onWheelEvent(this.domInstance, this.eventDirection, 'remove');
 				window.onkeyup = null;
+				this.onTouchEvent(false);
 			}
 		},
-		eventDirection: function(elem, direction) {
+		eventDirection: function(direction) {
 				if (direction === 'up') {
 					this.rollUp();
 				} else {
@@ -64,6 +74,10 @@ const playerCircle = view.element({
 				animate();
 			}, 'move-down-in' );
 		},
+		blinkCircle() {
+			animation(this.domInstance, 'blink', function() {
+			})
+		},
 		controlsFigure: function(icon, direction) {
 			if ( direction === 'up' && this.figurePointer < 2 ){
 				this.figurePointer += 1;
@@ -76,16 +90,20 @@ const playerCircle = view.element({
 			}
 			setFigure(this.icon, this.figurePointer);
 		},
-		onKeyboardEvent: function(e) {
+		onKeyboardEvent: function(event) {
 			var key = event.keyCode ? event.keyCode : event.which;
 			if (key == 87) {
 				this.eventDirection(this.domInstance, 'up');
 			}else if (key == 83) {
 				this.eventDirection(this.domInstance, 'down');
 			}	
-		},
-		blinkCircle
-
+		},	
+		onTouchEvent: function() {
+			const self = this;
+			onTouchEvent(this.domInstance, function(direction) {
+				self.eventDirection(direction);
+			})
+		}
 	}
 })
 
@@ -101,7 +119,6 @@ playerCircle.isListen(true);
 //
 function setFigure(icon, figureNumber) {
 	var circle = icon.parentNode,
-		current = circle.getAttribute('data-figure'),
 		displayFigure = circle.nextElementSibling.getElementsByTagName('h2')[0];
 		removeFigureClass(icon);
 
@@ -121,20 +138,9 @@ function setFigure(icon, figureNumber) {
 		displayFigure.innerHTML = 'Scissors';
 	}
 }
-//
-// Utilities - Figure getter
-// - get figure by player id
-//
-function getFigure(playerId) {
-	var element = document.getElementById(playerId);
-	return element.querySelector('.circle').dataset.figure;
-}
+
 function removeFigureClass(icon) {
 	var figureClass = findClassByString(icon.classList, 'fa-');
 	icon.classList.remove(figureClass.join());	
 }
 
-function blinkCircle() {
-	animation(this.domInstance, 'blink', function() {
-	})
-}
